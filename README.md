@@ -1,0 +1,83 @@
+EduFunKids
+
+Nama Project
+EduFunKids – Platform Edukasi Interaktif Anak
+
+Nama Kelompok & Anggota
+Kelompok 4
+Ragit Dwi Saputra
+Amalia Aisyaturadia
+Nadia Syahira
+
+Deskripsi Singkat Aplikasi
+EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf dan hitung cepat, dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
+
+Tujuan Sistem / Permasalahan yang Diselesaikan
+Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
+Membantu anak memahami dasar membaca dan berhitung melalui permainan edukatif.
+Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
+Memberikan contoh implementasi game edukasi menggunakan web technology dan database Firebase.
+
+Teknologi yang Digunakan
+HTML5 – Struktur halaman
+CSS3 – Styling antarmuka
+JavaScript – Logika game & interaksi
+Firebase Firestore – Database untuk penyimpanan data
+Assets/Music – Folder yang memuat musik dan sound effect
+Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi
+
+Cara Menjalankan Aplikasi
+Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:
+https://ragit09.github.io/Edufunkids/
+
+Cara Instalasi
+Aplikasi ini berbasis web statis, sehingga tidak memerlukan instalasi khusus.
+Cukup buka file .html menggunakan browser atau gunakan Live Server pada VSCode.
+
+Cara Konfigurasi
+Pastikan Anda memiliki file konfigurasi Firebase pada bagian:
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAiu2Z1N2NBbtboHAtyWTeRIENOjkdRGgk",
+  authDomain: "edufunkids-8cd92.firebaseapp.com",
+  projectId: "edufunkids-8cd92",
+  storageBucket: "edufunkids-8cd92.firebasestorage.app",
+  messagingSenderId: "809197357438",
+  appId: "1:809197357438:web:f42ce4a2779d7507bacb2f",
+  measurementId: "G-28NC6QM62J"
+};
+
+Cara Menjalankan (Run Project)
+Jalankan secara langsung:
+Buka index.html dengan browser.
+Jalankan menggunakan Live Server (disarankan):
+Install ekstensi "Live Server" di VSCode
+Klik kanan file HTML → Open with Live Server
+
+Akun Demo (Login)
+Gunakan akun berikut jika halaman login diperlukan:
+Email: demo@edufunkids.com
+Password: DemoPass123
+
+Link Deployment / Link APK / Link Demo Video
+Link Deployment: …
+Link Demo Video: …
+
+Screenshot Halaman Utama (Opsional)
+
+Masukkan file screenshot ke folder /screenshots lalu tampilkan:
+/screenshots/homepage.png
+
+Catatan Tambahan
+Aplikasi optimal di laptop/PC.
+Musik autoplay dapat diblokir oleh browser tertentu.
+File audio wajib berada pada folder music/.
+
+Hal-hal Penting yang Perlu Diketahui
+Beberapa fitur lanjutan seperti penyimpanan progres dan leaderboard belum diselesaikan.
+Tampilan masih dapat dikembangkan untuk lebih modern.
+Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
+
+Keterangan Tugas
+Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
+Dosen Pengampu: Dila Nurlaila, M.Kom
