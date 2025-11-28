@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduFunKids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="../pages/index.html">
+                <i class="bi bi-mortarboard-fill me-2"></i>EduFunKids
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="btn btn-outline-primary btn-sm" href="../pages/index.html">
+                    <i class="bi bi-arrow-left me-1"></i>Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="login-container">
+        <!-- Background Animation -->
+        <div class="background-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <div class="login-card">
+                <div class="card-header text-center">
+                    <h2 class="card-title text-primary fw-bold">EduFunKids</h2>
+                    <p class="text-muted">Masuk ke akun Anda atau buat yang baru</p>
+                </div>
+
+                <div class="card-body">
+                    <!-- Tabs untuk Login dan Daftar -->
+                    <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="register-tab" data-bs-toggle="pill" data-bs-target="#register" type="button" role="tab">
+            <i class="bi bi-person-plus me-2"></i>Buat Akun
+        </button>
+    </li>
+</ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        <!-- Form Login -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel">
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">
+                                        <i class="bi bi-envelope me-2"></i>Email
+                                    </label>
+                                    <input type="email" class="form-control" id="loginEmail" 
+                                           placeholder="contoh: user@gmail.com" required>
+                                    <div class="form-text">Masukkan alamat email yang valid</div>
+                                    <div class="invalid-feedback">Harap masukkan email yang valid</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">
+                                        <i class="bi bi-lock me-2"></i>Kata Sandi
+                                    </label>
+                                    <input type="password" class="form-control" id="loginPassword" 
+                                           placeholder="Masukkan kata sandi Anda" required>
+                                    <div class="form-text">Kata sandi minimal 8 karakter</div>
+                                    <div class="invalid-feedback">Harap masukkan kata sandi</div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <span class="spinner-border spinner-border-sm me-2 d-none" role="status"></span>
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+                                </button>
+                            </form>
+                            
+                            <div class="text-center mt-4">
+                                <hr>
+                                <p class="text-muted mb-3">Atau masuk cepat dengan</p>
+                                <button id="demoLogin" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-rocket-takeoff me-2"></i>Masuk Demo (Cepat)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Form Daftar -->
+                        <div class="tab-pane fade" id="register" role="tabpanel">
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">
+                                        <i class="bi bi-envelope me-2"></i>Email Orang Tua
+                                    </label>
+                                    <input type="email" class="form-control" id="registerEmail" 
+                                           placeholder="contoh: orangtua@gmail.com" required>
+                                    <div class="form-text">Masukkan alamat email yang aktif</div>
+                                    <div class="invalid-feedback">Harap masukkan email yang valid</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">
+                                        <i class="bi bi-lock me-2"></i>Kata Sandi
+                                    </label>
+                                    <input type="password" class="form-control" id="registerPassword" 
+                                           placeholder="Buat kata sandi yang kuat" minlength="8" required>
+                                    <div class="form-text">Kata sandi minimal 8 karakter, mengandung huruf besar, kecil, dan angka</div>
+                                    <div class="invalid-feedback">Kata sandi minimal 8 karakter</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">
+                                        <i class="bi bi-lock-fill me-2"></i>Konfirmasi Kata Sandi
+                                    </label>
+                                    <input type="password" class="form-control" id="confirmPassword" 
+                                           placeholder="Ulangi kata sandi Anda" required>
+                                    <div class="form-text">Ketik ulang kata sandi untuk konfirmasi</div>
+                                    <div class="invalid-feedback">Konfirmasi kata sandi tidak cocok</div>
+                                </div>
+                                
+                                <hr class="my-4">
+                                <h6 class="text-primary">
+                                    <i class="bi bi-person-vcard me-2"></i>Data Anak
+                                </h6>
+                                
+                                <div class="mb-3">
+                                    <label for="childName" class="form-label">Nama Anak</label>
+                                    <input type="text" class="form-control" id="childName" 
+                                           placeholder="Masukkan nama lengkap anak" required>
+                                    <div class="form-text">Isi dengan nama lengkap anak</div>
+                                    <div class="invalid-feedback">Harap masukkan nama anak</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="childAge" class="form-label">Usia Anak</label>
+                                    <input type="number" class="form-control" id="childAge" 
+                                           placeholder="Masukkan usia anak" min="3" max="12" required>
+                                    <div class="form-text">Usia harus antara 3-12 tahun</div>
+                                    <div class="invalid-feedback">Usia harus antara 3-12 tahun</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="childGrade" class="form-label">Kelas Anak</label>
+                                    <select class="form-select" id="childGrade" required>
+                                        <option value="" disabled selected>Pilih Kelas Anak</option>
+                                        <option value="TK">TK</option>
+                                        <option value="1">Kelas 1</option>
+                                        <option value="2">Kelas 2</option>
+                                        <option value="3">Kelas 3</option>
+                                        <option value="4">Kelas 4</option>
+                                        <option value="5">Kelas 5</option>
+                                        <option value="6">Kelas 6</option>
+                                    </select>
+                                    <div class="form-text">Pilih kelas sesuai tingkat pendidikan anak</div>
+                                    <div class="invalid-feedback">Harap pilih kelas</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="childAvatar" class="form-label">Pilih Avatar</label>
+                                    <div class="avatar-selection">
+                                        <div class="avatar-option selected" data-avatar="😊">😊</div>
+                                        <div class="avatar-option" data-avatar="👦">👦</div>
+                                        <div class="avatar-option" data-avatar="👧">👧</div>
+                                        <div class="avatar-option" data-avatar="🐱">🐱</div>
+                                    </div>
+                                    <div class="form-text">Pilih avatar yang disukai anak</div>
+                                    <input type="hidden" id="childAvatar" value="😊" required>
+                                </div>
+                                
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        Saya setuju dengan <a href="#" class="text-primary">Syarat & Ketentuan</a>
+                                    </label>
+                                    <div class="invalid-feedback">Anda harus menyetujui syarat & ketentuan</div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 py-2">
+                                    <span class="spinner-border spinner-border-sm me-2 d-none" role="status"></span>
+                                    <i class="bi bi-person-plus me-2"></i>Buat Akun
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="footer bg-dark text-white py-3 mt-5"> <!-- py-5 diubah menjadi py-3 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="mb-0">&copy; 2025 Platform Pembelajaran Anak. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script type="module" src="../js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

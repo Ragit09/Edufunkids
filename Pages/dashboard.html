@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduFunKids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center position-fixed w-100 h-100 bg-white" style="z-index: 9999;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Enhanced Sidebar -->
+        <nav class="compact-sidebar">
+            <div class="sidebar-header">
+                <a class="sidebar-brand" href="#">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    <span class="brand-text">EduFunKids</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-content">
+                <!-- Dashboard Title -->
+                <div class="dashboard-title">
+                    <h5>Pilihan Dashboard</h5>
+                </div>
+
+                <!-- Navigation Menu -->
+                <ul class="sidebar-nav">
+                    <li class="nav-item active">
+                        <a href="#home" class="nav-link" data-section="home">
+                            <div class="nav-icon">
+                                <i class="bi bi-house-fill"></i>
+                            </div>
+                            <span class="nav-text">Beranda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#materials" class="nav-link" data-section="materials">
+                            <div class="nav-icon">
+                                <i class="bi bi-book-fill"></i>
+                            </div>
+                            <span class="nav-text">Materi Belajar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#games" class="nav-link" data-section="games">
+                            <div class="nav-icon">
+                                <i class="bi bi-joystick"></i>
+                            </div>
+                            <span class="nav-text">Game Edukasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#progress" class="nav-link" data-section="progress">
+                            <div class="nav-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <span class="nav-text">Perkembangan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#achievements" class="nav-link" data-section="achievements">
+                            <div class="nav-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <span class="nav-text">Pencapaian & Lencana</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mini Profile -->
+            <div class="sidebar-footer">
+                <div class="mini-profile">
+                    <div class="mini-avatar" id="sidebarMiniAvatar">😊</div>
+                    <div class="mini-info">
+                        <div class="mini-name" id="sidebarMiniName">Nafis</div>
+                        <div class="mini-level">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <span id="sidebarPoints">0</span> Poin
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <h4 id="pageTitle">Beranda</h4>
+                    </div>
+                    <div class="header-actions">
+                        <!-- Tombol Pengaturan -->
+                        <button class="btn btn-light settings-btn" onclick="window.location.href='settings.html'" title="Pengaturan">
+                            <i class="bi bi-gear-fill me-2"></i>Pengaturan
+                        </button>
+                        <div class="mobile-menu-toggle">
+                            <button class="btn btn-light" id="mobileMenuToggle">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Space di bawah navbar - DIKURANGI JARAKNYA -->
+            <div class="navbar-bottom-space"></div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Home Section -->
+                <section id="home" class="content-section active">
+                    <!-- Welcome Banner with Avatar -->
+                    <div class="welcome-banner mb-4">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <div class="welcome-avatar">
+                                    <div id="welcomeAvatar">😊</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3 class="welcome-title">Selamat Datang, <span id="welcomeName">Nafis!</span> 👋</h3>
+                                <p class="welcome-text">Ayo belajar sambil bermain hari ini!</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="points-display">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <span id="welcomePoints">0</span> Poin
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card text-center">
+                                <div class="stat-icon bg-primary">
+                                    <i class="bi bi-book"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h2 class="counter" id="completedMaterials">0</h2>
+                                    <p>Materi Diselesaikan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card text-center">
+                                <div class="stat-icon bg-success">
+                                    <i class="bi bi-check-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h2 class="counter" id="completedQuizzes">0</h2>
+                                    <p>Kuis Selesai</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card text-center">
+                                <div class="stat-icon bg-warning">
+                                    <i class="bi bi-trophy"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h2 class="counter" id="achievementsCount">0</h2>
+                                    <p>Lencana Didapat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card text-center">
+                                <div class="stat-icon bg-info">
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h2 class="counter" id="totalPoints">0</h2>
+                                    <p>Total Poin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue Learning -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="section-header">
+                                <h5>Lanjutkan Belajar</h5>
+                                <a href="#materials" class="see-all nav-link-click" data-section="materials">Lihat Semua</a>
+                            </div>
+                            <div class="row" id="continueLearningGrid">
+                                <!-- Continue learning cards will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Games -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-header">
+                                <h5>Game Rekomendasi</h5>
+                                <a href="#games" class="see-all nav-link-click" data-section="games">Lihat Semua</a>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="game-card">
+                                        <div class="game-icon bg-warning">
+                                            <i class="bi bi-fonts"></i>
+                                        </div>
+                                        <div class="game-content">
+                                            <h6>Tebak Huruf</h6>
+                                            <p>Tebak huruf berdasarkan gambar dan suara</p>
+                                            <div class="game-progress-info">
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar" style="width: 0%"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="badge bg-primary">Huruf</span>
+                                                    <small class="text-muted progress-text">0% selesai</small>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-trophy-fill text-warning"></i>
+                                                        <span class="badge-count">0/2</span> Lencana
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <button class="btn btn-primary btn-sm w-100" onclick="goToGamesDashboard()">Main Sekarang</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="game-card">
+                                        <div class="game-icon bg-success">
+                                            <i class="bi bi-calculator"></i>
+                                        </div>
+                                        <div class="game-content">
+                                            <h6>Hitung Cepat</h6>
+                                            <p>Latihan berhitung dengan waktu yang menyenangkan</p>
+                                            <div class="game-progress-info">
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar" style="width: 0%"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="badge bg-success">Angka</span>
+                                                    <small class="text-muted progress-text">0% selesai</small>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-trophy-fill text-warning"></i>
+                                                        <span class="badge-count">0/2</span> Lencana
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <button class="btn btn-primary btn-sm w-100" onclick="goToGamesDashboard()">Main Sekarang</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="game-card">
+                                        <div class="game-icon bg-danger">
+                                            <i class="bi bi-palette"></i>
+                                        </div>
+                                        <div class="game-content">
+                                            <h6>Mewarnai</h6>
+                                            <p>Kembangkan kreativitas dengan mewarnai gambar</p>
+                                            <div class="game-progress-info">
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar" style="width: 0%"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="badge bg-warning">Warna</span>
+                                                    <small class="text-muted progress-text">0% selesai</small>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-trophy-fill text-warning"></i>
+                                                        <span class="badge-count">0/3</span> Lencana
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <button class="btn btn-primary btn-sm w-100" onclick="goToGamesDashboard()">Main Sekarang</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Materials Section -->
+                <section id="materials" class="content-section">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <h5>Pilih Materi yang Ingin Kamu Pelajari</h5>
+                            <p class="text-muted">Pilih materi favoritmu dan mulai belajar!</p>
+                        </div>
+                        <div class="row materials-grid">
+                            <!-- Materials will be loaded dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Games Section -->
+                <section id="games" class="content-section">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <h5>Pilih Game Seru Sambil Belajar</h5>
+                            <p class="text-muted">Belajar sambil bermain game yang menyenangkan</p>
+                        </div>
+                        <div class="row games-catalog">
+                            <!-- Games will be loaded dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Progress Section -->
+                <section id="progress" class="content-section">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <h5>Perkembangan Anak dalam Belajar</h5>
+                            <p class="text-muted">Lihat perkembangan belajarmu dari waktu ke waktu</p>
+                        </div>
+                        <div class="progress-charts">
+                            <!-- Progress charts will be here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievements Section -->
+                <section id="achievements" class="content-section">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <h5>Pencapaian & Lencana</h5>
+                            <p class="text-muted">Kumpulkan semua lencana dengan menyelesaikan game dan materi!</p>
+                        </div>
+                        <div class="row achievements-grid">
+                            <!-- Achievements and badges will be loaded dynamically -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Simple Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-box-arrow-right me-2"></i>Konfirmasi Logout
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-box-arrow-right text-danger" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5 class="mb-3">Keluar dari Akun?</h5>
+                    <p class="text-muted">Anda yakin ingin logout dari EduFunKids?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="logoutBtn">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.js"></script>
+    
+    <!-- Script untuk handle autoplay background music -->
+    <script>
+    // Handle autoplay policy dengan lebih agresif
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🎵 Initializing background music autoplay...');
+        
+        // Coba play music setelah semua resources loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                console.log('🎵 Attempting to start background music after page load...');
+                if (typeof startBackgroundMusic === 'function') {
+                    startBackgroundMusic();
+                }
+            }, 1000);
+        });
+        
+        // Juga coba play pada interaksi apapun
+        let musicStarted = false;
+        function tryStartMusic() {
+            if (!musicStarted && typeof startBackgroundMusic === 'function') {
+                console.log('🎵 Starting background music on user interaction...');
+                startBackgroundMusic();
+                musicStarted = true;
+                // Hapus event listeners setelah berhasil
+                document.removeEventListener('click', tryStartMusic);
+                document.removeEventListener('keydown', tryStartMusic);
+                document.removeEventListener('touchstart', tryStartMusic);
+            }
+        }
+        
+        document.addEventListener('click', tryStartMusic);
+        document.addEventListener('keydown', tryStartMusic);
+        document.addEventListener('touchstart', tryStartMusic);
+        
+        // Tambahkan tombol manual play untuk fallback
+        setTimeout(() => {
+            if (!musicStarted) {
+                const playButton = document.createElement('button');
+                playButton.innerHTML = '🔊 Putar Musik';
+                playButton.className = 'btn btn-primary btn-sm position-fixed';
+                playButton.style.cssText = 'bottom: 20px; right: 20px; z-index: 9998;';
+                playButton.onclick = function() {
+                    if (typeof startBackgroundMusic === 'function') {
+                        startBackgroundMusic();
+                    }
+                    this.remove();
+                };
+                document.body.appendChild(playButton);
+            }
+        }, 3000);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Edukasi - EduFunKids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/games-dashboard.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center position-fixed w-100 h-100 bg-white" style="z-index: 9999;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Game Dashboard Container -->
+    <div class="game-dashboard-container">
+        <!-- Header -->
+        <header class="game-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <button class="btn btn-back" onclick="goBackToDashboard()">
+                            <i class="bi bi-arrow-left"></i>
+                            Kembali
+                        </button>
+                    </div>
+                    <div class="col text-center">
+                        <h1 class="game-title">Game Edukasi Seru</h1>
+                        <p class="game-subtitle">Belajar sambil bermain!</p>
+                    </div>
+                    <div class="col-auto">
+                        <div class="game-points">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <span id="gamePoints">0</span> Poin
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Selection -->
+        <div class="game-selection-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-header">
+                            <h2>Pilih Game Favoritmu</h2>
+                            <p>Tantang dirimu dengan level yang berbeda-beda!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Cards -->
+                <div class="row games-grid">
+                    <!-- Tebak Huruf Game -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="game-selection-card" data-game="tebak-huruf">
+                            <div class="game-icon-wrapper">
+                                <div class="game-main-icon bg-primary">
+                                    <i class="bi bi-fonts"></i>
+                                </div>
+                                <div class="game-badge">POPULER</div>
+                            </div>
+                            <div class="game-info">
+                                <h3>Tebak Huruf</h3>
+                                <p>Tebak huruf berdasarkan gambar dan suara. Asah pengetahuan hurufmu!</p>
+                                <div class="game-stats">
+                                    <div class="stat">
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>5 Level</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="bi bi-trophy-fill"></i>
+                                        <span id="tebak-huruf-badges">0/2</span> Lencana
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" id="tebak-huruf-progress" style="width: 0%"></div>
+                                </div>
+                                <small id="tebak-huruf-progress-text">0% selesai</small>
+                            </div>
+                            <button class="btn btn-play-game" onclick="selectGame('tebak-huruf')">
+                                <i class="bi bi-play-fill"></i>
+                                Main Sekarang
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hitung Cepat Game -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="game-selection-card" data-game="hitung-cepat">
+                            <div class="game-icon-wrapper">
+                                <div class="game-main-icon bg-success">
+                                    <i class="bi bi-calculator"></i>
+                                </div>
+                                <div class="game-badge">BARU</div>
+                            </div>
+                            <div class="game-info">
+                                <h3>Hitung Cepat</h3>
+                                <p>Latihan berhitung dengan waktu. Jadi jago matematika!</p>
+                                <div class="game-stats">
+                                    <div class="stat">
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>5 Level</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="bi bi-trophy-fill"></i>
+                                        <span id="hitung-cepat-badges">0/2</span> Lencana
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" id="hitung-cepat-progress" style="width: 0%"></div>
+                                </div>
+                                <small id="hitung-cepat-progress-text">0% selesai</small>
+                            </div>
+                            <button class="btn btn-play-game" onclick="selectGame('hitung-cepat')">
+                                <i class="bi bi-play-fill"></i>
+                                Main Sekarang
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mewarnai Game -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="game-selection-card" data-game="mewarnai">
+                            <div class="game-icon-wrapper">
+                                <div class="game-main-icon bg-warning">
+                                    <i class="bi bi-palette"></i>
+                                </div>
+                                <div class="game-badge">SERU</div>
+                            </div>
+                            <div class="game-info">
+                                <h3>Mewarnai</h3>
+                                <p>Warnai gambar dengan kreativitasmu. Kembangkan imajinasi!</p>
+                                <div class="game-stats">
+                                    <div class="stat">
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>5 Level</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i class="bi bi-trophy-fill"></i>
+                                        <span id="mewarnai-badges">0/2</span> Lencana
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" id="mewarnai-progress" style="width: 0%"></div>
+                                </div>
+                                <small id="mewarnai-progress-text">0% selesai</small>
+                            </div>
+                            <button class="btn btn-play-game" onclick="selectGame('mewarnai')">
+                                <i class="bi bi-play-fill"></i>
+                                Main Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Selection Modal -->
+        <div class="modal fade" id="levelSelectionModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="levelModalTitle">Pilih Level</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="levelsGrid">
+                            <!-- Levels will be dynamically loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/games-dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

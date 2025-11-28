@@ -1,0 +1,351 @@
+/* css/game-hitung-cepat.css */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --success-color: #51cf66;
+    --warning-color: #fcc419;
+    --danger-color: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.game-container {
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+/* Game Header */
+.game-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.btn-back {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+.game-header h2 {
+    font-weight: bold;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.level-info {
+    background: linear-gradient(135deg, var(--success-color), #40c057);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.timer-display {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    color: var(--dark-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timer-display.warning {
+    background: var(--warning-color);
+    color: white;
+}
+
+.timer-display.danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Game Content */
+.game-content {
+    padding: 0 1rem;
+}
+
+/* Math Problem Section */
+.math-problem {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    min-width: 300px;
+}
+
+/* Options Section */
+.options-section {
+    margin-top: 2rem;
+}
+
+.option-btn {
+    background: white;
+    border: 3px solid #e9ecef;
+    border-radius: 15px;
+    padding: 1.5rem 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.option-btn:hover {
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.option-btn.correct {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.option-btn.incorrect {
+    background: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+/* Progress Section */
+.progress-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.progress {
+    height: 12px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(135deg, var(--success-color), #40c057);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+/* Score Section */
+.score-display-large {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    color: var(--dark-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Result Modal */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.result-icon {
+    font-size: 4rem;
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.score-summary {
+    background: rgba(82, 207, 102, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.score-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Star Rating Styles - SESUAI DENGAN GAMES-DASHBOARD */
+.star-rating {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.star {
+    transition: all 0.3s ease;
+    font-size: 2rem !important;
+    margin: 0 5px;
+    color: #e9ecef !important; /* Warna abu untuk bintang kosong */
+}
+
+.star.filled {
+    color: #ffc107 !important; /* Warna kuning untuk bintang terisi */
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes flash {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.5; }
+}
+
+@keyframes starPop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 0.6s ease-in-out;
+}
+
+.flash {
+    animation: flash 0.5s ease-in-out;
+}
+
+.star.filled {
+    animation: starPop 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .math-problem {
+        font-size: 2.5rem;
+        padding: 1.5rem;
+        min-width: 250px;
+    }
+    
+    .option-btn {
+        font-size: 1.5rem;
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .score-display-large {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .star {
+        font-size: 1.8rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .game-content {
+        padding: 0 0.5rem;
+    }
+    
+    .math-problem {
+        font-size: 2rem;
+        padding: 1rem;
+        min-width: 200px;
+    }
+    
+    .option-btn {
+        font-size: 1.2rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    .score-display-large {
+        font-size: 1.1rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .star {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Audio Elements */
+audio {
+    display: none;
+}
+
+/* Style untuk audio controls jika ingin ditampilkan */
+.audio-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.audio-toggle {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    color: #6a11cb;
+}
+
+.audio-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+.audio-toggle.muted {
+    color: #ff6b6b;
+}

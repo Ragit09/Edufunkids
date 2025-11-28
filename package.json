@@ -1,0 +1,23 @@
+{
+  "name": "edufunkids",
+  "version": "1.0.0",
+  "description": "Website edukasi anak dengan materi interaktif, kuis, dan game edukasi",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'Build process would go here'",
+    "test": "echo 'Tests would go here'"
+  },
+  "keywords": [
+    "edukasi",
+    "anak",
+    "belajar",
+    "game",
+    "kuis"
+  ],
+  "author": "Tim EduFunKids",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

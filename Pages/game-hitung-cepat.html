@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Cepat - EduFunKids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/game-hitung-cepat.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <button class="btn btn-back" onclick="exitGame()">
+                            <i class="bi bi-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="col text-center">
+                        <h2>Hitung Cepat</h2>
+                        <div class="level-info">Level <span id="currentLevel">1</span></div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="timer-display">
+                            <i class="bi bi-clock"></i>
+                            <span id="timer">60</span>s
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-content">
+            <div class="container-fluid">
+                <!-- Question Section -->
+                <div class="question-section text-center mb-4">
+                    <div class="math-problem" id="mathProblem">
+                        2 + 2 = ?
+                    </div>
+                </div>
+
+                <!-- Options Section -->
+                <div class="options-section">
+                    <div class="row" id="optionsGrid">
+                        <!-- Options will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>Soal</span>
+                        <span id="progressText">1/15</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" id="gameProgressBar" style="width: 7%"></div>
+                    </div>
+                </div>
+
+                <!-- Score Section -->
+                <div class="score-section text-center mt-3">
+                    <div class="score-display-large">
+                        <i class="bi bi-star-fill"></i>
+                        <span id="currentScore">0</span> Poin
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Modal -->
+        <div class="modal fade" id="resultModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="result-icon" id="resultIcon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3 id="resultTitle">Waktu Habis!</h3>
+                        <p id="resultMessage">Kamu berhasil menjawab soal matematika!</p>
+                        <div class="score-summary">
+                            <div class="score-item">
+                                <span>Soal Dijawab:</span>
+                                <strong id="questionsAnswered">0</strong>/<span id="totalQuestions">15</span>
+                            </div>
+                            <div class="score-item">
+                                <span>Skor Akhir:</span>
+                                <strong id="finalScore">0</strong>
+                            </div>
+                            <div class="score-item">
+                                <span>Poin:</span>
+                                <strong id="earnedPoints">+0</strong>
+                            </div>
+                        </div>
+                        <!-- Star rating will be dynamically inserted here -->
+                        <div class="mt-4">
+                            <button class="btn btn-primary me-2" onclick="nextLevel()">Level Berikutnya</button>
+                            <button class="btn btn-secondary" onclick="exitGame()">Kembali</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="../music/game.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clickSound">
+        <source src="../music/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="correctSound">
+        <source src="../music/correct.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completionSound">
+        <source src="../music/yeay-childrens.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clappingSound">
+        <source src="../music/clapping-2.mp3" type="audio/mpeg">
+    </audio>
+
+    <script type="module" src="../js/game-hitung-cepat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

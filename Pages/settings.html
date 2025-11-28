@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan - EduFunKids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center position-fixed w-100 h-100 bg-white" style="z-index: 9999;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <!-- Header -->
+        <header class="settings-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Judul di kiri -->
+                    <div class="col">
+                        <h4 class="mb-0">
+                            <i class="bi bi-gear-fill me-2"></i>Pengaturan
+                        </h4>
+                    </div>
+                    <!-- Tombol kembali di kanan -->
+                    <div class="col-auto">
+                        <a href="dashboard.html" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-arrow-left me-2"></i>Kembali ke Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="settings-main">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Settings Sidebar -->
+                    <div class="col-md-3 settings-sidebar">
+                        <div class="settings-nav">
+                            <button class="settings-nav-item active" data-target="edit-profile">
+                                <i class="bi bi-person-fill"></i>
+                                <span>Edit Profil</span>
+                            </button>
+                            <button class="settings-nav-item" data-target="audio">
+                                <i class="bi bi-volume-up-fill"></i>
+                                <span>Volume & Suara</span>
+                            </button>
+                            <button class="settings-nav-item" data-target="privacy">
+                                <i class="bi bi-shield-lock"></i>
+                                <span>Privasi & Keamanan</span>
+                            </button>
+                            <button class="settings-nav-item" data-target="notifications">
+                                <i class="bi bi-bell"></i>
+                                <span>Notifikasi</span>
+                            </button>
+                            <button class="settings-nav-item" data-target="about">
+                                <i class="bi bi-info-circle-fill"></i>
+                                <span>Tentang Web</span>
+                            </button>
+                            <button class="settings-nav-item text-danger" data-target="logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Settings Content -->
+                    <div class="col-md-9 settings-content">
+                        <!-- Edit Profile -->
+                        <div class="settings-panel active" id="edit-profile">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-person-fill me-2"></i>Edit Profil Anak
+                                </h5>
+                                <p class="panel-subtitle">Kelola informasi profil anak Anda</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class="avatar-section text-center mb-5">
+                                    <div class="avatar-preview mb-3">
+                                        <div id="settingsAvatarPreview" class="avatar-large">😊</div>
+                                    </div>
+                                    <h6 class="mb-3">Pilih Avatar</h6>
+                                    <div class="avatar-selection">
+                                        <div class="avatar-option selected" data-avatar="😊">😊</div>
+                                        <div class="avatar-option" data-avatar="👦">👦</div>
+                                        <div class="avatar-option" data-avatar="👧">👧</div>
+                                        <div class="avatar-option" data-avatar="🐱">🐱</div>
+                                        <div class="avatar-option" data-avatar="🐶">🐶</div>
+                                        <div class="avatar-option" data-avatar="🦊">🦊</div>
+                                        <div class="avatar-option" data-avatar="🐯">🐯</div>
+                                        <div class="avatar-option" data-avatar="🐰">🐰</div>
+                                        <div class="avatar-option" data-avatar="🐻">🐻</div>
+                                        <!-- Avatar baru yang imut dan lucu -->
+                                        <div class="avatar-option" data-avatar="🦄">🦄</div>
+                                        <div class="avatar-option" data-avatar="🐼">🐼</div>
+                                        <div class="avatar-option" data-avatar="🌟">🌟</div>
+                                    </div>
+                                    <input type="hidden" id="settingsChildAvatar" value="😊">
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Nama Anak</label>
+                                            <input type="text" class="form-control" id="settingsChildName" placeholder="Masukkan nama anak">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Email Orang Tua</label>
+                                            <input type="email" class="form-control" id="parentEmail" readonly>
+                                            <small class="text-muted">Email untuk notifikasi dan reset password</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Usia Anak</label>
+                                            <input type="number" class="form-control" id="settingsChildAge" min="3" max="12" placeholder="Usia">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Kelas</label>
+                                            <select class="form-select" id="settingsChildGrade">
+                                                <option value="TK">TK</option>
+                                                <option value="1">Kelas 1</option>
+                                                <option value="2">Kelas 2</option>
+                                                <option value="3">Kelas 3</option>
+                                                <option value="4">Kelas 4</option>
+                                                <option value="5">Kelas 5</option>
+                                                <option value="6">Kelas 6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Tanggal Bergabung</label>
+                                            <input type="text" class="form-control" id="joinDate" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Total Poin</label>
+                                            <input type="text" class="form-control" id="totalPoints" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-actions">
+                                    <button class="btn btn-primary" id="saveProfileBtn">
+                                        <i class="bi bi-check-circle me-2"></i>Simpan Perubahan
+                                    </button>
+                                    <button class="btn btn-outline-secondary" onclick="window.history.back()">
+                                        <i class="bi bi-x-circle me-2"></i>Batal
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volume & Sound -->
+                        <div class="settings-panel" id="audio">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-volume-up-fill me-2"></i>Pengaturan Suara
+                                </h5>
+                                <p class="panel-subtitle">Atur volume dan preferensi audio - Perubahan langsung berpengaruh</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <!-- Music Status Indicator -->
+                                <div class="music-status alert alert-info mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-music-note-beamed me-2"></i>
+                                        <div>
+                                            <strong>Status Musik: <span id="musicStatusText">Memuat...</span></strong>
+                                            <small class="d-block text-muted" id="musicVolumeText">Volume: 50%</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="volume-control mb-5">
+                                    <div class="volume-grid">
+                                        <div class="volume-item">
+                                            <div class="volume-header">
+                                                <i class="bi bi-music-note-beamed"></i>
+                                                <div>
+                                                    <strong>Musik Latar Dashboard</strong>
+                                                    <small class="text-muted">Musik latar belakang aplikasi</small>
+                                                </div>
+                                            </div>
+                                            <div class="volume-controls">
+                                                <input type="range" class="form-range volume-slider" id="musicVolume" min="0" max="100" value="50">
+                                                <div class="volume-value">50%</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="volume-item">
+                                            <div class="volume-header">
+                                                <i class="bi bi-speaker"></i>
+                                                <div>
+                                                    <strong>Efek Suara</strong>
+                                                    <small class="text-muted">Suara efek dalam game dan aktivitas</small>
+                                                </div>
+                                            </div>
+                                            <div class="volume-controls">
+                                                <input type="range" class="form-range volume-slider" id="sfxVolume" min="0" max="100" value="70">
+                                                <div class="volume-value">70%</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="volume-item">
+                                            <div class="volume-header">
+                                                <i class="bi bi-mic"></i>
+                                                <div>
+                                                    <strong>Narator</strong>
+                                                    <small class="text-muted">Suara panduan dan instruksi</small>
+                                                </div>
+                                            </div>
+                                            <div class="volume-controls">
+                                                <input type="range" class="form-range volume-slider" id="voiceVolume" min="0" max="100" value="80">
+                                                <div class="volume-value">80%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="sound-settings">
+                                    <h6 class="mb-4">Preferensi Suara</h6>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="soundEnabled" checked>
+                                        <label class="form-check-label" for="soundEnabled">
+                                            <strong>Aktifkan Semua Suara</strong>
+                                            <small class="d-block text-muted">Nonaktifkan untuk mematikan semua suara</small>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="backgroundMusic" checked>
+                                        <label class="form-check-label" for="backgroundMusic">
+                                            <strong>Musik Latar Belakang</strong>
+                                            <small class="d-block text-muted">Putar musik latar belakang di dashboard</small>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="voiceNarration" checked>
+                                        <label class="form-check-label" for="voiceNarration">
+                                            <strong>Narasi Suara</strong>
+                                            <small class="d-block text-muted">Aktifkan panduan suara</small>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="gameSounds" checked>
+                                        <label class="form-check-label" for="gameSounds">
+                                            <strong>Suara Game</strong>
+                                            <small class="d-block text-muted">Efek suara dalam permainan</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-actions mt-4">
+                                    <button class="btn btn-primary" id="saveAudioSettings">
+                                        <i class="bi bi-check-circle me-2"></i>Simpan Pengaturan Audio
+                                    </button>
+                                    <button class="btn btn-outline-secondary" onclick="resetAudioSettings()">
+                                        <i class="bi bi-arrow-clockwise me-2"></i>Reset ke Default
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy & Security -->
+                        <div class="settings-panel" id="privacy">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-shield-lock me-2"></i>Privasi & Keamanan
+                                </h5>
+                                <p class="panel-subtitle">Kelola keamanan akun dan privasi data</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class="privacy-settings">
+                                    <div class="privacy-item mb-4">
+                                        <h6>Data Anak</h6>
+                                        <p class="text-muted">Kelola data pribadi yang disimpan</p>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="saveProgress" checked>
+                                            <label class="form-check-label" for="saveProgress">
+                                                Simpan progress belajar secara otomatis
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="privacy-item mb-4">
+                                        <h6>Keamanan Akun</h6>
+                                        <p class="text-muted">Pengaturan keamanan untuk akun Anda</p>
+                                        <button class="btn btn-outline-primary btn-sm" id="changePasswordBtn">
+                                            <i class="bi bi-key me-1"></i>Ubah Password
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="privacy-item">
+                                        <h6>Hapus Data</h6>
+                                        <p class="text-muted">Hapus semua data anak dan progress belajar</p>
+                                        <button class="btn btn-outline-danger btn-sm" id="deleteDataBtn">
+                                            <i class="bi bi-trash me-1"></i>Hapus Semua Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="settings-panel" id="notifications">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-bell me-2"></i>Pengaturan Notifikasi
+                                </h5>
+                                <p class="panel-subtitle">Kelola notifikasi yang Anda terima</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class="notification-settings">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notificationsEnabled" checked>
+                                        <label class="form-check-label" for="notificationsEnabled">
+                                            <strong>Aktifkan Semua Notifikasi</strong>
+                                            <small class="d-block text-muted">Terima semua jenis notifikasi</small>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-category mb-4">
+                                        <h6 class="mb-3">Jenis Notifikasi</h6>
+                                        <div class="form-check form-switch mb-2">
+                                            <input class="form-check-input" type="checkbox" id="progressNotifications" checked>
+                                            <label class="form-check-label" for="progressNotifications">
+                                                Update Progress Belajar
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-switch mb-2">
+                                            <input class="form-check-input" type="checkbox" id="achievementNotifications" checked>
+                                            <label class="form-check-label" for="achievementNotifications">
+                                                Pencapaian & Lencana Baru
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-switch mb-2">
+                                            <input class="form-check-input" type="checkbox" id="gameNotifications" checked>
+                                            <label class="form-check-label" for="gameNotifications">
+                                                Game & Aktivitas Baru
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="reminderNotifications">
+                                            <label class="form-check-label" for="reminderNotifications">
+                                                Pengingat Belajar Harian
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="settings-actions">
+                                        <button class="btn btn-primary" id="saveNotificationSettings">
+                                            <i class="bi bi-check-circle me-2"></i>Simpan Pengaturan Notifikasi
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About -->
+                        <div class="settings-panel" id="about">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-info-circle-fill me-2"></i>Tentang EduFunKids
+                                </h5>
+                                <p class="panel-subtitle">Informasi tentang aplikasi dan pengembang</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class="about-content">
+                                    <div class="about-header text-center mb-5">
+                                        <div class="about-icon mb-3">
+                                            <i class="bi bi-mortarboard-fill text-primary" style="font-size: 4rem;"></i>
+                                        </div>
+                                        <h4 class="mb-2">EduFunKids</h4>
+                                        <p class="text-muted">Belajar Menyenangkan untuk Anak</p>
+                                        <div class="version-badge">
+                                            <span class="badge bg-primary">Versi 1.0.0</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="about-info mb-5">
+                                        <h6 class="mb-3">Deskripsi Aplikasi</h6>
+                                        <p class="text-muted">
+                                            EduFunKids adalah platform belajar online yang dirancang khusus untuk anak-anak usia 3-12 tahun 
+                                            dengan pendekatan belajar sambil bermain. Aplikasi ini menyediakan materi belajar interaktif, 
+                                            game edukasi, dan sistem reward untuk memotivasi anak dalam belajar.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="about-details mb-5">
+                                        <h6 class="mb-3">Informasi Kontak</h6>
+                                        <div class="info-grid">
+                                            <div class="info-item">
+                                                <i class="bi bi-envelope"></i>
+                                                <div>
+                                                    <strong>Email</strong>
+                                                    <div>edufunkids123@gmail.com</div>
+                                                </div>
+                                            </div>
+                                            <div class="info-item">
+                                                <i class="bi bi-telephone"></i>
+                                                <div>
+                                                    <strong>Telepon</strong>
+                                                    <div>087887242409</div>
+                                                </div>
+                                            </div>
+                                            <div class="info-item">
+                                                <i class="bi bi-person"></i>
+                                                <div>
+                                                    <strong>Developer</strong>
+                                                    <div>Tim EduFunKids</div>
+                                                </div>
+                                            </div>
+                                            <div class="info-item">
+                                                <i class="bi bi-calendar"></i>
+                                                <div>
+                                                    <strong>Dibuat</strong>
+                                                    <div>2024</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="about-features">
+                                        <h6 class="mb-3">Fitur Utama</h6>
+                                        <div class="features-grid">
+                                            <div class="feature-item">
+                                                <i class="bi bi-book text-primary"></i>
+                                                <div>
+                                                    <strong>Materi Interaktif</strong>
+                                                    <small>Belajar dengan konten menarik</small>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-joystick text-success"></i>
+                                                <div>
+                                                    <strong>Game Edukasi</strong>
+                                                    <small>Belajar sambil bermain</small>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-graph-up text-warning"></i>
+                                                <div>
+                                                    <strong>Progress Tracking</strong>
+                                                    <small>Pantau perkembangan belajar</small>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-trophy text-info"></i>
+                                                <div>
+                                                    <strong>Sistem Reward</strong>
+                                                    <small>Dapatkan lencana dan poin</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logout -->
+                        <div class="settings-panel" id="logout">
+                            <div class="panel-header">
+                                <h5 class="panel-title text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </h5>
+                                <p class="panel-subtitle">Keluar dari akun Anda</p>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <div class="logout-content text-center">
+                                    <div class="logout-icon mb-4">
+                                        <i class="bi bi-box-arrow-right text-danger" style="font-size: 4rem;"></i>
+                                    </div>
+                                    <h5 class="mb-3">Keluar Akun</h5>
+                                    <p class="text-muted mb-4">
+                                        Anda yakin ingin keluar dari akun EduFunKids? 
+                                        Progress terbaru akan disimpan secara otomatis.
+                                    </p>
+                                    
+                                    <div class="logout-actions">
+                                        <button class="btn btn-outline-secondary me-3" onclick="window.history.back()">
+                                            <i class="bi bi-arrow-left me-2"></i>Kembali
+                                        </button>
+                                        <button class="btn btn-danger" id="logoutBtn">
+                                            <i class="bi bi-box-arrow-right me-2"></i>Ya, Logout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalTitle">Konfirmasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="confirmationModalBody">
+                    <!-- Content will be filled dynamically -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="confirmActionBtn">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/settings.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.js"></script>
+    
+    <!-- Script untuk handle autoplay background music di settings -->
+    <script>
+    // Handle autoplay policy untuk settings page
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🎵 Initializing background music autoplay in settings...');
+        
+        // Coba play music setelah semua resources loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                console.log('🎵 Attempting to start background music in settings...');
+                if (typeof startBackgroundMusic === 'function') {
+                    startBackgroundMusic();
+                }
+            }, 1000);
+        });
+        
+        // Juga coba play pada interaksi apapun
+        let musicStarted = false;
+        function tryStartMusic() {
+            if (!musicStarted && typeof startBackgroundMusic === 'function') {
+                console.log('🎵 Starting background music in settings on user interaction...');
+                startBackgroundMusic();
+                musicStarted = true;
+                // Hapus event listeners setelah berhasil
+                document.removeEventListener('click', tryStartMusic);
+                document.removeEventListener('keydown', tryStartMusic);
+                document.removeEventListener('touchstart', tryStartMusic);
+            }
+        }
+        
+        document.addEventListener('click', tryStartMusic);
+        document.addEventListener('keydown', tryStartMusic);
+        document.addEventListener('touchstart', tryStartMusic);
+        
+        // Update music status display
+        function updateMusicStatus() {
+            const musicStatusText = document.getElementById('musicStatusText');
+            const musicVolumeText = document.getElementById('musicVolumeText');
+            const savedMusicVolume = localStorage.getItem('edu_music_volume');
+            const musicEnabled = localStorage.getItem('edu_music_enabled');
+            
+            if (musicStatusText && musicVolumeText) {
+                const volumePercent = savedMusicVolume ? Math.round(parseFloat(savedMusicVolume) * 100) : 50;
+                
+                if (musicEnabled === 'false') {
+                    musicStatusText.textContent = 'Dimatikan';
+                    musicStatusText.className = 'text-danger';
+                } else if (volumePercent === 0) {
+                    musicStatusText.textContent = 'Mute';
+                    musicStatusText.className = 'text-warning';
+                } else {
+                    musicStatusText.textContent = 'Aktif';
+                    musicStatusText.className = 'text-success';
+                }
+                
+                musicVolumeText.textContent = `Volume: ${volumePercent}%`;
+            }
+        }
+        
+        // Update status setiap 2 detik
+        setInterval(updateMusicStatus, 2000);
+        updateMusicStatus();
+    });
+
+    // Fungsi untuk reset audio settings
+    function resetAudioSettings() {
+        if (confirm('Reset semua pengaturan audio ke nilai default?')) {
+            // Reset volume sliders
+            document.getElementById('musicVolume').value = 50;
+            document.getElementById('sfxVolume').value = 50;
+            document.getElementById('voiceVolume').value = 50;
+            
+            // Reset checkboxes
+            document.getElementById('soundEnabled').checked = true;
+            document.getElementById('backgroundMusic').checked = true;
+            document.getElementById('voiceNarration').checked = true;
+            document.getElementById('gameSounds').checked = true;
+            
+            // Trigger input events to update displays
+            document.getElementById('musicVolume').dispatchEvent(new Event('input'));
+            document.getElementById('sfxVolume').dispatchEvent(new Event('input'));
+            document.getElementById('voiceVolume').dispatchEvent(new Event('input'));
+            
+            showTempNotification('Pengaturan audio direset ke default', 'success');
+        }
+    }
+
+    // Fungsi untuk menampilkan notifikasi sementara
+    function showTempNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+        notification.style.cssText = `
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 250px;
+            max-width: 300px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            border: none;
+            border-radius: 10px;
+        `;
+        
+        const typeIcons = {
+            'success': '✅',
+            'error': '❌',
+            'warning': '⚠️',
+            'info': 'ℹ️'
+        };
+        
+        notification.innerHTML = `
+            <div class="d-flex align-items-center">
+                <span class="me-2" style="font-size: 1rem;">${typeIcons[type] || 'ℹ️'}</span>
+                <span class="flex-grow-1" style="font-size: 0.9rem;">${message}</span>
+                <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 3000);
+    }
+    </script>
+</body>
+</html>

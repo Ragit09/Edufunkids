@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFunKids - Belajar Seru untuk Anak</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center position-fixed w-100 h-100 bg-white" style="z-index: 9999;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container py-2">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="bi bi-mortarboard-fill me-2"></i>EduFunKids
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary btn-sm" href="#features">Fitur</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary btn-sm" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in-up">
+                    <h1 class="display-4 fw-bold text-white animate__animated animate__fadeInUp">Belajar Jadi Seru dan Menyenangkan!</h1>
+                    <p class="lead text-white my-4 animate__animated animate__fadeInUp animate__delay-1s">
+                        EduFunKids membantu anak-anak belajar dengan materi interaktif, kuis seru, dan game edukasi yang membuat belajar tidak pernah membosankan.
+                    </p>
+                    <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="login.html" class="btn btn-primary btn-lg me-3">Mulai Belajar</a>
+                        <a href="#features" class="btn btn-outline-light btn-lg">Lihat Fitur</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="hero-image text-center">
+                        <div class="floating-element">🎓</div>
+                        <div class="floating-element">📚</div>
+                        <div class="floating-element">🎮</div>
+                        <img src="../img/foto1.png" alt="Belajar Seru" class="img-fluid rounded-3 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <h2 class="counter text-primary" data-target="1000">0</h2>
+                        <p class="text-muted">Anak Senang</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <h2 class="counter text-primary" data-target="500">0</h2>
+                        <p class="text-muted">Materi Interaktif</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <h2 class="counter text-primary" data-target="200">0</h2>
+                        <p class="text-muted">Game Edukasi</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-item">
+                        <h2 class="counter text-primary" data-target="50">0</h2>
+                        <p class="text-muted">Kuis Seru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold text-primary">Fitur Unggulan</h2>
+                    <p class="lead">Desain khusus untuk membuat belajar menjadi pengalaman yang menyenangkan</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="feature-box p-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-book-fill text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Materi Belajar Interaktif</h4>
+                        <p>Pelajari hal-hal baru dengan animasi menarik, gambar berwarna, dan konten yang mudah dipahami.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Materi sesuai usia</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Animasi menarik</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Suara narator</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="feature-box p-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-puzzle-fill text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Kuis & Tantangan</h4>
+                        <p>Uji pengetahuan dengan kuis seru dan dapatkan poin serta lencana untuk setiap keberhasilan.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Soal interaktif</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Skor real-time</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Lencana penghargaan</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="feature-box p-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-joystick text-success" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Game Edukasi</h4>
+                        <p>Belajar sambil bermain dengan game edukasi yang dirancang khusus untuk mengasah kemampuan.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Game pembelajaran</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Tingkat kesulitan</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Hadiah virtual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold">Tentang EduFunKids</h2>
+                    <p class="lead">Platform belajar online yang dirancang khusus untuk anak-anak usia 3-12 tahun dengan pendekatan belajar sambil bermain.</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-shield-check me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h5>Aman untuk Anak</h5>
+                                <p>Konten yang ramah anak dan pengawasan orang tua</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-graph-up me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h5>Pantau Perkembangan</h5>
+                                <p>Orang tua dapat melihat perkembangan belajar anak</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-phone me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h5>Akses Mudah</h5>
+                                <p>Dapat diakses dari berbagai perangkat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="about-image">
+                        <img src="../img/foto2.png" alt="Tentang Kami" class="img-fluid rounded-3 shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold text-white">Siap untuk Belajar yang Menyenangkan?</h2>
+                    <p class="lead text-white mb-4">Bergabung dengan ribuan anak yang sudah merasakan pengalaman belajar seru</p>
+                    <a href="login.html" class="btn btn-light btn-lg px-5 py-3">Daftar Sekarang - Gratis!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-mortarboard-fill me-2"></i>EduFunKids</h5>
+                    <p>Membuat belajar menjadi petualangan yang menyenangkan untuk setiap anak.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#features" class="text-white-50 text-decoration-none">Fitur</a></li>
+                        <li><a href="#about" class="text-white-50 text-decoration-none">Tentang</a></li>
+                        <li><a href="login.html" class="text-white-50 text-decoration-none">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-envelope me-2"></i>edufunkids123@gmail.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>087887242409</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 EduFunKids. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
