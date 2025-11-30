@@ -2,7 +2,7 @@ Nama Project
 EduFunKids – Platform Edukasi Interaktif Anak
 
 Nama Kelompok & Anggota
-Kelompok 4
+Kelompok 7
 Ragit Dwi Saputra
 Amalia Aisyaturadia
 Nadia Syahira
@@ -61,9 +61,7 @@ Password: DemoPass123
 Link Deployment / Link APK 
 Link Deployment: https://ragit09.github.io/Edufunkids/
 
-Screenshot Halaman Utama (Opsional)
-
-Masukkan file screenshot ke folder /screenshots lalu tampilkan:
+Screenshot Halaman Utama 
 /screenshots/homepage.png
 
 Catatan Tambahan
