@@ -22,7 +22,8 @@ CSS3 – Styling antarmuka
 JavaScript – Logika game & interaksi
 Firebase Firestore – Database untuk penyimpanan data
 Assets/Music – Folder yang memuat musik dan sound effect
-Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi
+Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi,
+tapi disarankan menggunakan chrome agar narator mengunakan bahasa indonesia.
 
 Cara Menjalankan Aplikasi
 Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:

@@ -230,7 +230,7 @@ async function loadMaterialsData() {
                         items: [
                             { char: 'D', example: '🐑 Domba', sound: 'D' },
                             { char: 'E', example: '🦅 Elang', sound: 'E' },
-                            { char: 'F', example: '🐟 Ikan', sound: 'F' }
+                            { char: 'F', example: '🖼️ Foto', sound: 'F' }
                         ]
                     },
                     {
@@ -250,7 +250,7 @@ async function loadMaterialsData() {
                         content: 'Ayo uji pengetahuanmu tentang huruf A-I!',
                         questions: [
                             {
-                                question: 'Huruf apakah ini? 🍎',
+                                question: 'Apa huruf pertama benda ini? 🍎',
                                 options: ['A', 'B', 'C', 'D'],
                                 correct: 0,
                                 explanation: 'Benar! 🍎 adalah Apel yang dimulai dengan huruf A'
@@ -262,7 +262,7 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Ikan dimulai dengan huruf I'
                             },
                             {
-                                question: 'Huruf manakah untuk gambar ini? 🪱',
+                                question: 'Huruf manakah untuk mengawali gambar ini? 🪱',
                                 options: ['B', 'C', 'D', 'E'],
                                 correct: 1,
                                 explanation: 'Benar! 🪱 adalah Cacing yang dimulai dengan huruf C'
@@ -746,8 +746,8 @@ async function loadMaterialsData() {
                                 value: '#fcc419',
                                 examples: [
                                     { image: '🌞', text: 'Matahari warnanya kuning' },
-                                    { image: '🍌', text: 'Pisang kuning' },
-                                    { image: '🐥', text: 'Anak ayam kuning' }
+                                    { image: '🍌', text: 'Pisang warnanya kuning' },
+                                    { image: '🐥', text: 'Anak ayam warnanya kuning' }
                                 ],
                                 sound: 'Kuning'
                             }
@@ -791,8 +791,8 @@ async function loadMaterialsData() {
                                 value: '#51cf66',
                                 examples: [
                                     { image: '🌳', text: 'Pohon warnanya hijau' },
-                                    { image: '🐸', text: 'Katak hijau' },
-                                    { image: '🥦', text: 'Brokoli hijau' }
+                                    { image: '🐸', text: 'Katak warnanya hijau' },
+                                    { image: '🥦', text: 'Brokoli warnanya hijau' }
                                 ],
                                 sound: 'Hijau'
                             }
@@ -809,8 +809,8 @@ async function loadMaterialsData() {
                                 value: '#ff922b',
                                 examples: [
                                     { image: '🍊', text: 'Jeruk warnanya orange' },
-                                    { image: '🎃', text: 'Labu orange' },
-                                    { image: '🦊', text: 'Rubah orange' }
+                                    { image: '🎃', text: 'Labu warnanya orange' },
+                                    { image: '🦊', text: 'Rubah warnanya orange' }
                                 ],
                                 sound: 'Orange'
                             }
@@ -827,8 +827,8 @@ async function loadMaterialsData() {
                                 value: '#cc5de8',
                                 examples: [
                                     { image: '🍇', text: 'Anggur warnanya ungu' },
-                                    { image: '🪀', text: 'Yoyo' },
-                                    { image: '🦄', text: 'Kuda Poni' }
+                                    { image: '🪀', text: 'Yoyo warnanya ungu' },
+                                    { image: '🦄', text: 'Kuda Poni warnanya ungu' }
                                 ],
                                 sound: 'Ungu'
                             }
@@ -840,13 +840,13 @@ async function loadMaterialsData() {
                         content: 'Ayo uji pengetahuanmu tentang warna sekunder!',
                         questions: [
                             {
-                                question: 'Warna apakah ini? 🍊',
+                                question: 'apa warna benda ini? 🍊',
                                 options: ['Orange', 'Hijau', 'Ungu', 'Kuning'],
                                 correct: 0,
                                 explanation: 'Benar! Jeruk berwarna orange'
                             },
                             {
-                                question: 'Warna pohon biasanya?',
+                                question: 'Warna daun biasanya?',
                                 options: ['Orange', 'Hijau', 'Ungu', 'Merah'],
                                 correct: 1,
                                 explanation: 'Benar! Pohon berwarna hijau'
