@@ -281,7 +281,7 @@ function getLevelData(gameId, level) {
         'mewarnai': {
             1: { title: 'Buah-buahan', description: 'Warnai gambar buah', reward: '+10 Poin' },
             2: { title: 'Hewan Lucu', description: 'Warnai gambar hewan', reward: '+15 Poin' },
-            3: { title: 'Kendaraan', description: 'Warnai gambar kendaraan', reward: '+20 Poin' },
+            3: { title: 'Rumah ', description: 'Warnai gambar Rumah', reward: '+20 Poin' },
             4: { title: 'Pemandangan', description: 'Warnai pemandangan', reward: '+25 Poin' },
             5: { title: 'Kreasi Bebas', description: 'Warnai gambar bebas', reward: 'Lencana Seni' }
         }

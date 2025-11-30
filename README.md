@@ -1,5 +1,3 @@
-EduFunKids
-
 Nama Project
 EduFunKids – Platform Edukasi Interaktif Anak
 
@@ -10,7 +8,7 @@ Amalia Aisyaturadia
 Nadia Syahira
 
 Deskripsi Singkat Aplikasi
-EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf dan hitung cepat, dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
+EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
 
 Tujuan Sistem / Permasalahan yang Diselesaikan
 Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
@@ -59,9 +57,8 @@ Gunakan akun berikut jika halaman login diperlukan:
 Email: demo@edufunkids.com
 Password: DemoPass123
 
-Link Deployment / Link APK / Link Demo Video
-Link Deployment: …
-Link Demo Video: …
+Link Deployment / Link APK 
+Link Deployment: https://ragit09.github.io/Edufunkids/
 
 Screenshot Halaman Utama (Opsional)
 
@@ -69,12 +66,11 @@ Masukkan file screenshot ke folder /screenshots lalu tampilkan:
 /screenshots/homepage.png
 
 Catatan Tambahan
-Aplikasi optimal di laptop/PC.
+Aplikasi optimal di tablet, laptop/PC.
 Musik autoplay dapat diblokir oleh browser tertentu.
 File audio wajib berada pada folder music/.
 
 Hal-hal Penting yang Perlu Diketahui
-Beberapa fitur lanjutan seperti penyimpanan progres dan leaderboard belum diselesaikan.
 Tampilan masih dapat dikembangkan untuk lebih modern.
 Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 

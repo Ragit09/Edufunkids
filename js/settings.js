@@ -665,7 +665,7 @@ async function handleDeleteData() {
         
         // Redirect to setup page after a delay
         setTimeout(() => {
-            window.location.href = 'setup.html';
+            window.location.href = 'dashboard.html';
         }, 2000);
         
     } catch (error) {

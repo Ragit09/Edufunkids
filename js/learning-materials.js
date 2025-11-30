@@ -218,8 +218,8 @@ async function loadMaterialsData() {
                         visual: '🅰️🅱️🅲️',
                         items: [
                             { char: 'A', example: '🍎 Apel', sound: 'A' },
-                            { char: 'B', example: '🚲 Sepeda', sound: 'B' },
-                            { char: 'C', example: '🐱 Kucing', sound: 'C' }
+                            { char: 'B', example: '🎈 Balon', sound: 'B' },
+                            { char: 'C', example: '🪱 Cacing ', sound: 'C' }
                         ]
                     },
                     {
@@ -228,8 +228,8 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar huruf D, E, dan F!',
                         visual: '🅳🅴🅵',
                         items: [
-                            { char: 'D', example: '🚪 Pintu', sound: 'D' },
-                            { char: 'E', example: '🐘 Gajah', sound: 'E' },
+                            { char: 'D', example: '🐑 Domba', sound: 'D' },
+                            { char: 'E', example: '🦅 Elang', sound: 'E' },
                             { char: 'F', example: '🐟 Ikan', sound: 'F' }
                         ]
                     },
@@ -239,9 +239,9 @@ async function loadMaterialsData() {
                         content: 'Mari lanjutkan dengan huruf G, H, dan I!',
                         visual: '🅶🅷🅸',
                         items: [
-                            { char: 'G', example: '🦒 Jerapah', sound: 'G' },
-                            { char: 'H', example: '🏠 Rumah', sound: 'H' },
-                            { char: 'I', example: '🍦 Es Krim', sound: 'I' }
+                            { char: 'G', example: '🐘 Gajah', sound: 'G' },
+                            { char: 'H', example: '🐅 Harimau', sound: 'H' },
+                            { char: 'I', example: '🐠 Ikan', sound: 'I' }
                         ]
                     },
                     {
@@ -262,10 +262,10 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Ikan dimulai dengan huruf I'
                             },
                             {
-                                question: 'Huruf manakah untuk gambar ini? 🚲',
-                                options: ['C', 'B', 'D', 'E'],
+                                question: 'Huruf manakah untuk gambar ini? 🪱',
+                                options: ['B', 'C', 'D', 'E'],
                                 correct: 1,
-                                explanation: 'Benar! 🚲 adalah Sepeda yang dimulai dengan huruf B'
+                                explanation: 'Benar! 🪱 adalah Cacing yang dimulai dengan huruf C'
                             }
                         ]
                     }
@@ -279,7 +279,7 @@ async function loadMaterialsData() {
                         items: [
                             { char: 'J', example: '🧃 Jus', sound: 'J' },
                             { char: 'K', example: '🔑 Kunci', sound: 'K' },
-                            { char: 'L', example: '🦁 Singa', sound: 'L' }
+                            { char: 'L', example: '🐬 Lumba-Lumba', sound: 'L' }
                         ]
                     },
                     {
@@ -288,9 +288,9 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar huruf M, N, dan O!',
                         visual: '🅼🅽🅾',
                         items: [
-                            { char: 'M', example: '🌙 Bulan', sound: 'M' },
-                            { char: 'N', example: '🔢 Angka', sound: 'N' },
-                            { char: 'O', example: '🐙 Gurita', sound: 'O' }
+                            { char: 'M', example: '🕊️ Merpati', sound: 'M' },
+                            { char: 'N', example: '🐉 Naga', sound: 'N' },
+                            { char: 'O', example: '🧠 Otak', sound: 'O' }
                         ]
                     },
                     {
@@ -300,8 +300,8 @@ async function loadMaterialsData() {
                         visual: '🅿️🆀🆁',
                         items: [
                             { char: 'P', example: '🐧 Penguin', sound: 'P' },
-                            { char: 'Q', example: '👑 Ratu', sound: 'Q' },
-                            { char: 'R', example: '🌈 Pelangi', sound: 'R' }
+                            { char: 'Q', example: '📖 Qur-an ', sound: 'Q' },
+                            { char: 'R', example: '🍞 Roti', sound: 'R' }
                         ]
                     },
                     {
@@ -337,9 +337,9 @@ async function loadMaterialsData() {
                         content: 'Mari belajar huruf S, T, dan U!',
                         visual: '🆂🆃🆄',
                         items: [
-                            { char: 'S', example: '⭐ Bintang', sound: 'S' },
-                            { char: 'T', example: '🌳 Pohon', sound: 'T' },
-                            { char: 'U', example: '🐻 Beruang', sound: 'U' }
+                            { char: 'S', example: '🚲 Sepeda', sound: 'S' },
+                            { char: 'T', example: '🎒 Tas', sound: 'T' },
+                            { char: 'U', example: '💵 Uang', sound: 'U' }
                         ]
                     },
                     {
@@ -348,9 +348,9 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar huruf V, W, dan X!',
                         visual: '🆅🆆🆇',
                         items: [
-                            { char: 'V', example: '🎻 Biola', sound: 'V' },
-                            { char: 'W', example: '💧 Air', sound: 'W' },
-                            { char: 'X', example: '🦊 Rubah', sound: 'X' }
+                            { char: 'V', example: '💊 Vitamin', sound: 'V' },
+                            { char: 'W', example: '🛜 Wifi', sound: 'W' },
+                            { char: 'X', example: '🩻 x-ray', sound: 'X' }
                         ]
                     },
                     {
@@ -359,7 +359,7 @@ async function loadMaterialsData() {
                         content: 'Mari selesaikan dengan huruf Y dan Z!',
                         visual: '🆈🆉',
                         items: [
-                            { char: 'Y', example: '🛶 Perahu', sound: 'Y' },
+                            { char: 'Y', example: '🪀 Yoyo', sound: 'Y' },
                             { char: 'Z', example: '🦓 Zebra', sound: 'Z' }
                         ]
                     },
@@ -375,16 +375,16 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Zebra dimulai dengan huruf Z'
                             },
                             {
-                                question: 'Huruf apakah ini? 🌳',
-                                options: ['T', 'S', 'U', 'V'],
-                                correct: 0,
-                                explanation: 'Benar! Pohon dimulai dengan huruf T'
+                                question: 'Huruf apakah ini? 🎒',
+                                options: ['V', 'S', 'U', 'T'],
+                                correct: 3,
+                                explanation: 'Benar! Tas dimulai dengan huruf 🎒'
                             },
                             {
-                                question: 'Huruf pertama dari kata "Biola"?',
-                                options: ['V', 'W', 'X', 'Y'],
-                                correct: 0,
-                                explanation: 'Benar! Biola dimulai dengan huruf V'
+                                question: 'Huruf pertama dari kata "Vitamin"?',
+                                options: ['W', 'V', 'X', 'Y'],
+                                correct: 1,
+                                explanation: 'Benar! 💊 dimulai dengan huruf V'
                             }
                         ]
                     }
@@ -453,7 +453,7 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar angka 3 dan 4!',
                         visual: '3️⃣4️⃣',
                         items: [
-                            { number: 3, example: '🐱🐱🐱 Tiga Kucing', sound: 'Tiga' },
+                            { number: 3, example: '😸😾😼 Tiga Kucing', sound: 'Tiga' },
                             { number: 4, example: '🚗🚗🚗🚗 Empat Mobil', sound: 'Empat' }
                         ]
                     },
@@ -478,7 +478,7 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Ada dua apel 🍎🍎'
                             },
                             {
-                                question: 'Angka manakah untuk tiga kucing?',
+                                question: 'Angka manakah untuk tiga kucing? 😸😾😼',
                                 options: ['1', '2', '3', '4'],
                                 correct: 2,
                                 explanation: 'Benar! Tiga kucing berarti angka 3'
@@ -510,7 +510,7 @@ async function loadMaterialsData() {
                         visual: '8️⃣9️⃣',
                         items: [
                             { number: 8, example: '🐙🐙🐙🐙🐙🐙🐙🐙 Delapan Gurita', sound: 'Delapan' },
-                            { number: 9, example: '⚽ Sembilan Bola', sound: 'Sembilan' }
+                            { number: 9, example: '⚽⚽⚽⚽⚽⚽⚽⚽⚽ Sembilan Bola', sound: 'Sembilan' }
                         ]
                     },
                     {
@@ -519,7 +519,7 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 10!',
                         visual: '🔟',
                         items: [
-                            { number: 10, example: '👆 Sepuluh Jari', sound: 'Sepuluh' }
+                            { number: 10, example: ' ✋🤚Sepuluh Jari', sound: 'Sepuluh' }
                         ]
                     },
                     {
@@ -535,14 +535,14 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Angka manakah untuk delapan gurita?',
-                                options: ['7', '8', '9', '10'],
-                                correct: 1,
+                                options: ['10', '9', '8', '7'],
+                                correct: 2,
                                 explanation: 'Benar! Delapan gurita berarti angka 8'
                             },
                             {
                                 question: 'Berapa jumlah bola ini? ⚽⚽⚽⚽⚽⚽⚽⚽⚽',
                                 options: ['8', '9', '10', '11'],
-                                correct: 1,
+                                correct: 2,
                                 explanation: 'Benar! Ada sembilan bola ⚽⚽⚽⚽⚽⚽⚽⚽⚽'
                             }
                         ]
@@ -591,8 +591,8 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Angka manakah untuk tiga belas daun?',
-                                options: ['12', '13', '14', '15'],
-                                correct: 1,
+                                options: ['13', '14', '15', '16'],
+                                correct: 0,
                                 explanation: 'Benar! Tiga belas daun berarti angka 13'
                             },
                             {
@@ -631,7 +631,7 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 20!',
                         visual: '2️⃣0️⃣',
                         items: [
-                            { number: 20, example: '👆👆 Dua Puluh Jari', sound: 'Dua Puluh' }
+                            { number: 20, example: '✋🤚✋🤚 Dua Puluh Jari', sound: 'Dua Puluh' }
                         ]
                     },
                     {
@@ -647,8 +647,8 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Angka manakah untuk delapan belas lilin?',
-                                options: ['17', '18', '19', '20'],
-                                correct: 1,
+                                options: ['18', '19', '20', '21'],
+                                correct: 0,
                                 explanation: 'Benar! Delapan belas lilin berarti angka 18'
                             },
                             {
@@ -728,7 +728,7 @@ async function loadMaterialsData() {
                                 value: '#339af0',
                                 examples: [
                                     { image: '🌊', text: 'Laut warnanya biru' },
-                                    { image: '🦋', text: 'Kupu-kupu biru' },
+                                    { image: '🛜', text: 'Jaringan Wifi' },
                                     { image: '👖', text: 'Celana jeans biru' }
                                 ],
                                 sound: 'Biru'
@@ -827,8 +827,8 @@ async function loadMaterialsData() {
                                 value: '#cc5de8',
                                 examples: [
                                     { image: '🍇', text: 'Anggur warnanya ungu' },
-                                    { image: '🌸', text: 'Bunga ungu' },
-                                    { image: '👑', text: 'Mahkota ungu' }
+                                    { image: '🪀', text: 'Yoyo' },
+                                    { image: '🦄', text: 'Kuda Poni' }
                                 ],
                                 sound: 'Ungu'
                             }
@@ -847,8 +847,8 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Warna pohon biasanya?',
-                                options: ['Hijau', 'Orange', 'Ungu', 'Merah'],
-                                correct: 0,
+                                options: ['Orange', 'Hijau', 'Ungu', 'Merah'],
+                                correct: 1,
                                 explanation: 'Benar! Pohon berwarna hijau'
                             },
                             {
@@ -873,7 +873,7 @@ async function loadMaterialsData() {
                                 examples: [
                                     { image: '🐈‍⬛', text: 'Kucing hitam' },
                                     { image: '🌑', text: 'Malam hitam' },
-                                    { image: '🖊️', text: 'Pulpen hitam' }
+                                    { image: '🐜', text: 'Semut' }
                                 ],
                                 sound: 'Hitam'
                             }
@@ -922,8 +922,8 @@ async function loadMaterialsData() {
                         questions: [
                             {
                                 question: 'Warna apakah ini? 🐈‍⬛',
-                                options: ['Hitam', 'Putih', 'Coklat', 'Abu-abu'],
-                                correct: 0,
+                                options: ['Cokelat', 'Putih', 'Hitam ', 'Abu-abu'],
+                                correct: 2,
                                 explanation: 'Benar! Kucing hitam berwarna hitam'
                             },
                             {
@@ -934,8 +934,8 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Warna beruang biasanya?',
-                                options: ['Coklat', 'Hitam', 'Putih', 'Orange'],
-                                correct: 0,
+                                options: ['Hitam', 'Cokelat', 'Putih', 'Orange'],
+                                correct: 1,
                                 explanation: 'Benar! Beruang biasanya berwarna coklat'
                             }
                         ]
