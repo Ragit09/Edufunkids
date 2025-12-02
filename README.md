@@ -32,13 +32,13 @@ Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
 Memberikan contoh implementasi game edukasi menggunakan web technology dan database Firebase.
 
 ## Teknologi yang Digunakan
-HTML5 – Struktur halaman
-CSS3 – Styling antarmuka
-JavaScript – Logika game & interaksi
-Firebase Firestore – Database untuk penyimpanan data
-Assets/Music – Folder yang memuat musik dan sound effect
-Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi,
-tapi disarankan menggunakan chrome agar narator mengunakan bahasa indonesia.
+- HTML5 – Struktur halaman
+- CSS3 – Styling antarmuka
+- JavaScript – Logika game & interaksi
+- Firebase Firestore – Database untuk penyimpanan data
+- Assets/Music – Folder yang memuat musik dan sound effect
+- Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi,
+  disarankan menggunakan chrome agar narator mengunakan bahasa indonesia.
 
 ## Cara Menjalankan Aplikasi
 Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:
@@ -63,15 +63,15 @@ const firebaseConfig = {
 
 ## Cara Menjalankan (Run Project)
 Jalankan secara langsung:
-Buka index.html dengan browser.
-Jalankan menggunakan Live Server (disarankan):
-Install ekstensi "Live Server" di VSCode
-Klik kanan file HTML → Open with Live Server
+- Buka index.html dengan browser.
+- Jalankan menggunakan Live Server (disarankan):
+- Install ekstensi "Live Server" di VSCode
+- Klik kanan file HTML → Open with Live Server
 
 ## Akun Demo (Login)
 Gunakan akun berikut jika halaman login diperlukan:
-Email: demo@edufunkids.com
-Password: DemoPass123
+- Email: demo@edufunkids.com
+- Password: DemoPass123
 
 ## Link Deployment / Link APK 
 Link Deployment: https://ragit09.github.io/Edufunkids/
@@ -80,16 +80,16 @@ Link Deployment: https://ragit09.github.io/Edufunkids/
 /screenshots/homepage.png
 
 ## Catatan Tambahan
-Aplikasi optimal di tablet, laptop/PC.
-akses web menggunakan chrome agar voive narator menggunakan bahasa indonesia
-Musik autoplay dapat diblokir oleh browser tertentu.
-File audio wajib berada pada folder music/.
-file foto wajib didalam folder img/
+- Aplikasi optimal di tablet, laptop/PC.
+- akses web menggunakan chrome agar voive narator menggunakan bahasa indonesia
+- Musik autoplay dapat diblokir oleh browser tertentu.
+- File audio wajib berada pada folder music/.
+- file foto wajib didalam folder img/
 
 ## Hal-hal Penting yang Perlu Diketahui
-masih ada beberapagame yang harus di buat sementar hanya 3.
-Tampilan masih dapat dikembangkan untuk lebih modern.
-Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
+- masih ada beberapa game yang harus di buat sementar hanya 3.
+- Tampilan masih dapat dikembangkan untuk lebih modern.
+- Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 
 ## Keterangan Tugas
 Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
