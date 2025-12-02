@@ -26,10 +26,10 @@ EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancan
 - [Desain UI/UX ramah anak yang colorful, simpel, dan mudah digunakan.]
 
 ## Tujuan Sistem / Permasalahan yang Diselesaikan
-Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
-Membantu anak memahami dasar membaca dan berhitung melalui permainan edukatif.
-Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
-Memberikan contoh implementasi game edukasi menggunakan web technology dan database Firebase.
+- Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
+- Membantu anak memahami dasar membaca dan berhitung melalui permainan edukatif.
+- Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
+- Memberikan contoh implementasi game edukasi menggunakan web technology dan database Firebase.
 
 ## Teknologi yang Digunakan
 - HTML5 – Struktur halaman
