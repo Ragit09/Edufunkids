@@ -7,6 +7,7 @@
     --danger-color: #ff6b6b;
     --gold-color: #ffd700;
     --trophy-gold: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+    --dark-color: #333;
 }
 
 * {
@@ -86,85 +87,76 @@ body {
     padding: 0 1rem;
 }
 
-/* Question Section */
+/* Question Section - DIUBAH TANPA HURUF BESAR */
 .question-section h3 {
     color: white;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem; /* Tambah margin bawah */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.5rem;
 }
 
-.letter-display {
-    font-size: 6rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
-    margin: 1rem 0;
-    background: rgba(255, 255, 255, 0.2);
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-}
+/* HAPUS SEMUA STYLING UNTUK letter-display */
+/* .letter-display {
+    Dihapus sepenuhnya
+} */
 
-/* Image Section */
+/* Image Section - DIPERBESAR KARENA TIDAK ADA HURUF DI ATAS */
 .image-container {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2.5rem; /* Ditambah padding */
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     display: inline-block;
-    max-width: 300px;
+    max-width: 350px; /* Lebarkan sedikit */
+    margin-top: 1rem;
 }
 
 .object-image {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 250px; /* Perbesar gambar */
+    max-height: 250px;
     border-radius: 15px;
 }
 
-/* Options Section */
+.hint-text {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Options Section - SAMA PERSIS DENGAN HITUNG CEPAT */
 .options-section {
     margin-top: 2rem;
 }
 
-/* Style untuk 4 pilihan jawaban dalam 2 baris */
 .options-section .row {
+    margin: 0 -0.5rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 -0.5rem;
 }
 
 .options-section .col-6 {
     flex: 0 0 50%;
     max-width: 50%;
     padding: 0 0.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Mengurangi jarak antara baris */
-.options-section .mb-2 {
-    margin-bottom: 0.5rem !important; /* Mengurangi dari 1rem ke 0.5rem */
-}
-
+/* KOTAK PILIHAN SAMA PERSIS DENGAN HITUNG CEPAT */
 .option-btn {
     background: white;
     border: 3px solid #e9ecef;
     border-radius: 15px;
-    padding: 1.2rem 0.5rem;
-    font-size: 1.3rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--dark-color);
     transition: all 0.3s ease;
     cursor: pointer;
-    margin-bottom: 0.5rem; /* Mengurangi margin bottom */
+    margin-bottom: 0;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    min-height: 85px; /* Sedikit mengurangi tinggi */
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,21 +166,23 @@ body {
 }
 
 .option-btn:hover {
-    transform: translateY(-3px); /* Mengurangi efek hover */
-    border-color: var(--primary-color);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    border-color: var(--success-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .option-btn.correct {
     background: var(--success-color);
     color: white;
     border-color: var(--success-color);
+    animation: pulse 0.6s ease-in-out;
 }
 
 .option-btn.incorrect {
     background: var(--danger-color);
     color: white;
     border-color: var(--danger-color);
+    animation: shake 0.5s;
 }
 
 /* Progress Section */
@@ -197,7 +191,7 @@ body {
     padding: 1.5rem;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 1.5rem; /* Menambah margin top */
+    margin-top: 1.5rem;
 }
 
 .progress {
@@ -213,15 +207,20 @@ body {
     transition: width 0.5s ease;
 }
 
-/* Feedback Section */
+/* Feedback Section - DIPERBAIKI */
 .feedback-message {
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 1.2rem;
+    border-radius: 15px;
     font-weight: bold;
     text-align: center;
     opacity: 0;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feedback-message.show {
@@ -231,14 +230,16 @@ body {
 .feedback-message.correct {
     background: var(--success-color);
     color: white;
+    border: 2px solid rgba(81, 207, 102, 0.3);
 }
 
 .feedback-message.incorrect {
     background: var(--danger-color);
     color: white;
+    border: 2px solid rgba(255, 107, 107, 0.3);
 }
 
-/* Result Modal - MENGIKUTI GAME HITUNG CEPAT DENGAN PIALA KUNING */
+/* Result Modal */
 .modal-content {
     border-radius: 20px;
     border: none;
@@ -258,7 +259,7 @@ body {
 }
 
 .score-summary {
-    background: rgba(106, 17, 203, 0.1); /* Warna ungu untuk tebak huruf */
+    background: rgba(106, 17, 203, 0.1);
     padding: 1.5rem;
     border-radius: 15px;
     margin: 1.5rem 0;
@@ -277,7 +278,7 @@ body {
     margin-bottom: 0;
 }
 
-/* Star Rating Styles - SESUAI DENGAN GAMES-DASHBOARD */
+/* Star Rating Styles */
 .star-rating {
     text-align: center;
     margin: 1rem 0;
@@ -287,28 +288,16 @@ body {
     transition: all 0.3s ease;
     font-size: 2rem !important;
     margin: 0 5px;
-    color: #e9ecef !important; /* Warna abu untuk bintang kosong */
+    color: #e9ecef !important;
 }
 
 .star.filled {
-    color: #ffc107 !important; /* Warna kuning untuk bintang terisi */
+    color: #ffc107 !important;
     text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
     transform: scale(1.1);
 }
 
 /* Animations */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
-}
-
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
@@ -347,10 +336,6 @@ body {
     }
 }
 
-.bounce {
-    animation: bounce 0.6s;
-}
-
 .shake {
     animation: shake 0.5s;
 }
@@ -369,21 +354,29 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .letter-display {
-        font-size: 4rem;
-        width: 120px;
-        height: 120px;
+    .question-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .image-container {
+        padding: 2rem;
+        max-width: 300px;
     }
     
     .object-image {
-        max-width: 150px;
-        max-height: 150px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .hint-text {
+        font-size: 1.1rem;
     }
     
     .option-btn {
-        padding: 1rem 0.3rem;
-        font-size: 1.1rem;
-        min-height: 75px;
+        font-size: 1.5rem;
+        padding: 1.2rem 0.8rem;
+        min-height: 90px;
     }
     
     .game-header h2 {
@@ -397,6 +390,11 @@ body {
     .trophy-icon {
         font-size: 4rem;
     }
+    
+    .feedback-message {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -404,30 +402,29 @@ body {
         padding: 0 0.5rem;
     }
     
-    .letter-display {
-        font-size: 3rem;
-        width: 100px;
-        height: 100px;
+    .question-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
     }
     
     .image-container {
-        padding: 1rem;
+        padding: 1.5rem;
+        max-width: 280px;
     }
     
     .object-image {
-        max-width: 120px;
-        max-height: 120px;
+        max-width: 180px;
+        max-height: 180px;
+    }
+    
+    .hint-text {
+        font-size: 1rem;
     }
     
     .option-btn {
-        font-size: 1rem;
-        padding: 0.8rem 0.2rem;
-        min-height: 65px;
-    }
-    
-    .options-section .col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
+        font-size: 1.2rem;
+        padding: 1rem 0.5rem;
+        min-height: 80px;
     }
     
     .star {
@@ -441,42 +438,14 @@ body {
     .score-summary {
         padding: 1rem;
     }
+    
+    .feedback-message {
+        font-size: 1rem;
+        padding: 0.8rem;
+        min-height: 60px;
+    }
 }
 
-/* Sembunyikan audio elements */
 audio {
     display: none;
-}
-
-/* Style untuk audio controls jika ingin ditampilkan */
-.audio-controls {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.audio-toggle {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-    color: #6a11cb;
-}
-
-.audio-toggle:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 1);
-}
-
-.audio-toggle.muted {
-    color: #ff6b6b;
 }

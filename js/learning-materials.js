@@ -316,7 +316,7 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Kunci dimulai dengan huruf K'
                             },
                             {
-                                question: 'Huruf apakah ini? 🐧',
+                                question: 'apakah huruf pertama hewan ini? 🐧',
                                 options: ['P', 'Q', 'R', 'S'],
                                 correct: 0,
                                 explanation: 'Benar! Penguin dimulai dengan huruf P'
@@ -375,7 +375,7 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Zebra dimulai dengan huruf Z'
                             },
                             {
-                                question: 'Huruf apakah ini? 🎒',
+                                question: 'apa huruf pertama benda ini? 🎒',
                                 options: ['V', 'S', 'U', 'T'],
                                 correct: 3,
                                 explanation: 'Benar! Tas dimulai dengan huruf 🎒'
@@ -443,8 +443,22 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 1 dan 2!',
                         visual: '1️⃣2️⃣',
                         items: [
-                            { number: 1, example: '🍎 Satu Apel', sound: 'Satu' },
-                            { number: 2, example: '👦👧 Dua Anak', sound: 'Dua' }
+                            { 
+                                number: 1, 
+                                example: 'Satu Apel', 
+                                sound: 'Satu', 
+                                emoji: '🍎',
+                                emojiCount: 1,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 2, 
+                                example: 'Dua Anak', 
+                                sound: 'Dua', 
+                                emoji: '👦👧',
+                                emojiCount: 2,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -453,8 +467,22 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar angka 3 dan 4!',
                         visual: '3️⃣4️⃣',
                         items: [
-                            { number: 3, example: '😸😾😼 Tiga Kucing', sound: 'Tiga' },
-                            { number: 4, example: '🚗🚗🚗🚗 Empat Mobil', sound: 'Empat' }
+                            { 
+                                number: 3, 
+                                example: 'Tiga Kucing', 
+                                sound: 'Tiga', 
+                                emoji: '😸😾😼',
+                                emojiCount: 3,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 4, 
+                                example: 'Empat Mobil', 
+                                sound: 'Empat', 
+                                emoji: '🚗',
+                                emojiCount: 4,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -463,7 +491,14 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 5!',
                         visual: '5️⃣',
                         items: [
-                            { number: 5, example: '✋ Lima Jari', sound: 'Lima' }
+                            { 
+                                number: 5, 
+                                example: 'Lima tangan', 
+                                sound: 'Lima', 
+                                emoji: '✋',
+                                emojiCount: 5,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -478,7 +513,7 @@ async function loadMaterialsData() {
                                 explanation: 'Benar! Ada dua apel 🍎🍎'
                             },
                             {
-                                question: 'Angka manakah untuk tiga kucing? 😸😾😼',
+                                question: 'Angka manakah untuk tiga kucing?',
                                 options: ['1', '2', '3', '4'],
                                 correct: 2,
                                 explanation: 'Benar! Tiga kucing berarti angka 3'
@@ -499,8 +534,22 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 6 dan 7!',
                         visual: '6️⃣7️⃣',
                         items: [
-                            { number: 6, example: '🐛🐛🐛🐛🐛🐛 Enam Ulat', sound: 'Enam' },
-                            { number: 7, example: '🌈 Tujuh Warna', sound: 'Tujuh' }
+                            { 
+                                number: 6, 
+                                example: 'Enam Ulat', 
+                                sound: 'Enam', 
+                                emoji: '🐛',
+                                emojiCount: 6,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 7, 
+                                example: 'Tujuh Warna Pelangi', 
+                                sound: 'Tujuh', 
+                                emoji: '🌈',
+                                emojiCount: 7,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -509,8 +558,22 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar angka 8 dan 9!',
                         visual: '8️⃣9️⃣',
                         items: [
-                            { number: 8, example: '🐙🐙🐙🐙🐙🐙🐙🐙 Delapan Gurita', sound: 'Delapan' },
-                            { number: 9, example: '⚽⚽⚽⚽⚽⚽⚽⚽⚽ Sembilan Bola', sound: 'Sembilan' }
+                            { 
+                                number: 8, 
+                                example: 'Delapan Gurita', 
+                                sound: 'Delapan', 
+                                emoji: '🐙',
+                                emojiCount: 8,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 9, 
+                                example: 'Sembilan Bola', 
+                                sound: 'Sembilan', 
+                                emoji: '⚽',
+                                emojiCount: 9,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -519,7 +582,15 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 10!',
                         visual: '🔟',
                         items: [
-                            { number: 10, example: ' ✋🤚Sepuluh Jari', sound: 'Sepuluh' }
+                            { 
+                                number: 10, 
+                                example: 'Sepuluh Jari', 
+                                sound: 'Sepuluh', 
+                                emoji: '✋🤚',
+                                emojiCount: 2,
+                                emojiIsPair: true,
+                                pairs: 1
+                            }
                         ]
                     },
                     {
@@ -555,8 +626,22 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 11 dan 12!',
                         visual: '1️⃣1️⃣1️⃣2️⃣',
                         items: [
-                            { number: 11, example: '⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽⚽ Sebelas Bola', sound: 'Sebelas' },
-                            { number: 12, example: '🕛 Dua Belas Jam', sound: 'Dua Belas' }
+                            { 
+                                number: 11, 
+                                example: 'Sebelas Bola', 
+                                sound: 'Sebelas', 
+                                emoji: '⚽',
+                                emojiCount: 11,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 12, 
+                                example: 'Dua Belas Jam', 
+                                sound: 'Dua Belas', 
+                                emoji: '🕛',
+                                emojiCount: 12,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -565,8 +650,22 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar angka 13 dan 14!',
                         visual: '1️⃣3️⃣1️⃣4️⃣',
                         items: [
-                            { number: 13, example: '🍀 Tiga Belas Daun', sound: 'Tiga Belas' },
-                            { number: 14, example: '🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦 Empat Belas Burung', sound: 'Empat Belas' }
+                            { 
+                                number: 13, 
+                                example: 'Tiga Belas Daun', 
+                                sound: 'Tiga Belas', 
+                                emoji: '🍀',
+                                emojiCount: 13,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 14, 
+                                example: 'Empat Belas Burung', 
+                                sound: 'Empat Belas', 
+                                emoji: '🐦',
+                                emojiCount: 14,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -575,7 +674,14 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 15!',
                         visual: '1️⃣5️⃣',
                         items: [
-                            { number: 15, example: '🕒 Tiga Sore', sound: 'Lima Belas' }
+                            { 
+                                number: 15, 
+                                example: 'Lima Belas', 
+                                sound: 'Lima Belas', 
+                                emoji: '🕒',
+                                emojiCount: 15,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -611,8 +717,22 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 16 dan 17!',
                         visual: '1️⃣6️⃣1️⃣7️⃣',
                         items: [
-                            { number: 16, example: '🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬 Enam Belas Permen', sound: 'Enam Belas' },
-                            { number: 17, example: '🌟 Tujuh Belas Bintang', sound: 'Tujuh Belas' }
+                            { 
+                                number: 16, 
+                                example: 'Enam Belas Permen', 
+                                sound: 'Enam Belas', 
+                                emoji: '🍬',
+                                emojiCount: 16,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 17, 
+                                example: 'Tujuh Belas Bintang', 
+                                sound: 'Tujuh Belas', 
+                                emoji: '🌟',
+                                emojiCount: 17,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -621,8 +741,22 @@ async function loadMaterialsData() {
                         content: 'Sekarang belajar angka 18 dan 19!',
                         visual: '1️⃣8️⃣1️⃣9️⃣',
                         items: [
-                            { number: 18, example: '🎂 Delapan Belas Lilin', sound: 'Delapan Belas' },
-                            { number: 19, example: '📚 Sembilan Belas Buku', sound: 'Sembilan Belas' }
+                            { 
+                                number: 18, 
+                                example: 'Delapan Belas Lilin', 
+                                sound: 'Delapan Belas', 
+                                emoji: '🎂',
+                                emojiCount: 18,
+                                emojiIsPair: false
+                            },
+                            { 
+                                number: 19, 
+                                example: 'Sembilan Belas Buku', 
+                                sound: 'Sembilan Belas', 
+                                emoji: '📚',
+                                emojiCount: 19,
+                                emojiIsPair: false
+                            }
                         ]
                     },
                     {
@@ -631,7 +765,15 @@ async function loadMaterialsData() {
                         content: 'Mari belajar angka 20!',
                         visual: '2️⃣0️⃣',
                         items: [
-                            { number: 20, example: '✋🤚✋🤚 Dua Puluh Jari', sound: 'Dua Puluh' }
+                            { 
+                                number: 20, 
+                                example: 'Dua Puluh Jari', 
+                                sound: 'Dua Puluh', 
+                                emoji: '✋🤚',
+                                emojiCount: 4,
+                                emojiIsPair: true,
+                                pairs: 2
+                            }
                         ]
                     },
                     {
@@ -766,7 +908,7 @@ async function loadMaterialsData() {
                             },
                             {
                                 question: 'Warna matahari adalah?',
-                                options: ['Biru', 'Kuning', 'Merah', 'Hijau'],
+                                options: ['Biru', 'Kuning', 'Merad', 'Hijau'],
                                 correct: 1,
                                 explanation: 'Benar! Matahari berwarna kuning cerah'
                             },
@@ -1408,13 +1550,41 @@ function createNumberStep(step) {
             
             <div class="visual-example">
                 <h5>🎯 Latihan Berhitung:</h5>
-                ${step.items.map(item => `
-                    <div class="counting-item">
-                        <div class="counting-visual">${item.example.split(' ')[0]}</div>
-                        <div class="counting-number">${item.number}</div>
-                        <div>${item.example}</div>
-                    </div>
-                `).join('')}
+                ${step.items.map(item => {
+                    let emojis = '';
+                    
+                    if (item.emojiIsPair) {
+                        // Untuk jari (pasangan tangan)
+                        const pairEmoji = item.emoji; // "✋🤚"
+                        const repeatCount = item.pairs || Math.floor(item.emojiCount / 2);
+                        emojis = pairEmoji.repeat(repeatCount);
+                    } else {
+                        // Untuk item tunggal
+                        const baseEmoji = item.emoji;
+                        // Hitung jumlah karakter emoji
+                        const emojiCharacters = Array.from(baseEmoji);
+                        const emojiLength = emojiCharacters.length;
+                        
+                        if (emojiLength >= item.emojiCount) {
+                            // Jika emoji sudah cukup panjang, ambil sebagian
+                            emojis = emojiCharacters.slice(0, item.emojiCount).join('');
+                        } else {
+                            // Jika perlu mengulang
+                            const repeatNeeded = Math.ceil(item.emojiCount / emojiLength);
+                            const fullString = baseEmoji.repeat(repeatNeeded);
+                            // Ambil hanya jumlah karakter yang dibutuhkan
+                            emojis = Array.from(fullString).slice(0, item.emojiCount).join('');
+                        }
+                    }
+                    
+                    return `
+                        <div class="counting-item">
+                            <div class="text-muted mb-1">${item.example}</div>
+                            <div class="counting-number">${item.number}</div>
+                            <div class="counting-visual mt-1">${emojis}</div>
+                        </div>
+                    `;
+                }).join('')}
             </div>
         </div>
     `;

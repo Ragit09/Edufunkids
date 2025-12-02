@@ -190,9 +190,8 @@ function nextQuestion() {
     
     const correctObject = gameData.objects[randomLetter];
     
-    // Display question
-    document.getElementById('letterDisplay').textContent = randomLetter;
-    document.getElementById('questionText').textContent = `Huruf apa yang dimulai dengan benda ini?`;
+    // Display question - TIDAK MENAMPILKAN HURUF LAGI
+    document.getElementById('questionText').textContent = `huruf apakah yang dimulai benda ini?`;
     
     // Display image (using placeholder if image not found)
     const imageElement = document.getElementById('objectImage');
@@ -240,11 +239,11 @@ function generateOptions(correctLetter, correctAnswer) {
     // Shuffle options
     options = shuffleArray(options);
     
-    // Generate HTML for options - 2 BARIS (2 kolom per baris)
+    // Generate HTML untuk options
     optionsGrid.innerHTML = '';
     
     // Baris pertama (2 pilihan)
-    let firstRowHTML = '<div class="row justify-content-center mb-2">'; // Mengurangi margin bottom
+    let firstRowHTML = '';
     for (let i = 0; i < 2; i++) {
         firstRowHTML += `
             <div class="col-6">
@@ -254,10 +253,9 @@ function generateOptions(correctLetter, correctAnswer) {
             </div>
         `;
     }
-    firstRowHTML += '</div>';
     
     // Baris kedua (2 pilihan)
-    let secondRowHTML = '<div class="row justify-content-center">';
+    let secondRowHTML = '';
     for (let i = 2; i < 4; i++) {
         secondRowHTML += `
             <div class="col-6">
@@ -267,7 +265,6 @@ function generateOptions(correctLetter, correctAnswer) {
             </div>
         `;
     }
-    secondRowHTML += '</div>';
     
     optionsGrid.innerHTML = firstRowHTML + secondRowHTML;
 }
@@ -306,16 +303,17 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     optionButtons.forEach(btn => {
         if (btn.textContent.trim() === correctAnswer) {
             btn.classList.add('correct');
-            btn.classList.add('bounce');
         } else if (btn.textContent.trim() === selectedAnswer && !isCorrect) {
             btn.classList.add('incorrect');
-            btn.classList.add('shake');
         }
     });
     
-    // Show feedback
+    // Show feedback - TAMPILKAN HURUF YANG BENAR
     const feedbackMessage = document.getElementById('feedbackMessage');
-    feedbackMessage.textContent = isCorrect ? 'Benar! 🎉' : `Salah! Jawabannya: ${correctAnswer}`;
+    const correctLetter = currentCorrectLetter;
+    feedbackMessage.textContent = isCorrect ? 
+        `Benar! 🎉 ${correctAnswer} dimulai dengan huruf ${correctLetter}` : 
+        `Salah! 😢 ${correctAnswer} dimulai dengan huruf ${correctLetter}`;
     feedbackMessage.className = `feedback-message show ${isCorrect ? 'correct' : 'incorrect'}`;
     
     // Update score
@@ -361,10 +359,10 @@ function endGame() {
     const accuracy = (correctAnswers / totalQuestions) * 100;
     let stars = 1;
     
-    if (accuracy === 100) stars = 3;        // Semua benar: 3 bintang
-    else if (accuracy >= 80) stars = 3;     // 80-99%: 3 bintang  
-    else if (accuracy >= 60) stars = 2;     // 60-79%: 2 bintang
-    else stars = 1;                         // <60%: 1 bintang
+    if (accuracy === 100) stars = 3;
+    else if (accuracy >= 80) stars = 3;
+    else if (accuracy >= 60) stars = 2;
+    else stars = 1;
     
     // Calculate points
     const basePoints = currentLevel * 10;
@@ -398,11 +396,11 @@ function showResultModal(stars, totalPoints) {
         resultMessage = 'Jangan menyerah!';
     }
     
-    // Update modal content dengan layout seperti game hitung cepat dan piala kuning
+    // Update modal content
     modalBody.innerHTML = `
         <div class="text-center">
             <div class="trophy-icon trophy-rotate">
-                <i class="bi bi-trophy-fill"></i> <!-- Ikon piala kuning -->
+                <i class="bi bi-trophy-fill"></i>
             </div>
             <h3 id="resultTitle" class="mb-2">${resultTitle}</h3>
             <p id="resultMessage" class="text-muted mb-4">${resultMessage}</p>

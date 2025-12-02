@@ -54,31 +54,44 @@ function initFormValidation() {
 // Fungsi untuk validasi form
 function validateForm(form) {
     let isValid = true;
-    const inputs = form.querySelectorAll('input[required], select[required]');
+    const inputs = form.querySelectorAll('input[required], select[required], .form-check-input[required]');
+    
+    // Reset semua field error terlebih dahulu
+    inputs.forEach(input => {
+        input.classList.remove('is-invalid');
+        input.classList.remove('is-valid');
+    });
     
     inputs.forEach(input => {
-        // Reset validation state
-        input.classList.remove('is-valid', 'is-invalid');
-        
         // Check required fields
-        if (!input.value.trim()) {
-            showFieldError(input, 'Field ini wajib diisi');
+        if (input.type === 'checkbox') {
+            // Untuk checkbox
+            if (!input.checked) {
+                input.classList.add('is-invalid');
+                isValid = false;
+                return;
+            } else {
+                input.classList.add('is-valid');
+            }
+        } else if (!input.value.trim()) {
+            // Untuk input text, email, password, select
+            input.classList.add('is-invalid');
             isValid = false;
             return;
         }
         
         // Email validation
         if (input.type === 'email' && !isValidEmail(input.value)) {
-            showFieldError(input, 'Format email tidak valid');
+            input.classList.add('is-invalid');
             isValid = false;
             return;
         }
         
         // Password validation
-        if (input.type === 'password') {
+        if (input.type === 'password' && input.id === 'registerPassword') {
             const passwordError = validatePassword(input.value, input.id);
             if (passwordError) {
-                showFieldError(input, passwordError);
+                input.classList.add('is-invalid');
                 isValid = false;
                 return;
             }
@@ -86,9 +99,9 @@ function validateForm(form) {
         
         // Confirm password validation
         if (input.id === 'confirmPassword') {
-            const password = document.getElementById('registerPassword').value;
+            const password = document.getElementById('registerPassword')?.value;
             if (input.value !== password) {
-                showFieldError(input, 'Konfirmasi kata sandi tidak cocok');
+                input.classList.add('is-invalid');
                 isValid = false;
                 return;
             }
@@ -97,14 +110,14 @@ function validateForm(form) {
         // Age validation
         if (input.id === 'childAge') {
             const age = parseInt(input.value);
-            if (age < 3 || age > 12) {
-                showFieldError(input, 'Usia harus antara 3-12 tahun');
+            if (isNaN(age) || age < 3 || age > 12) {
+                input.classList.add('is-invalid');
                 isValid = false;
                 return;
             }
         }
         
-        // If all validations pass
+        // Jika semua validasi lolos, tambahkan kelas valid
         input.classList.add('is-valid');
     });
     
@@ -136,20 +149,6 @@ function validatePassword(password, fieldId) {
     }
     
     return null;
-}
-
-// Fungsi untuk menampilkan error field
-function showFieldError(input, message) {
-    input.classList.add('is-invalid');
-    
-    let feedback = input.parentElement.querySelector('.invalid-feedback');
-    if (!feedback) {
-        feedback = document.createElement('div');
-        feedback.className = 'invalid-feedback';
-        input.parentElement.appendChild(feedback);
-    }
-    
-    feedback.textContent = message;
 }
 
 // Fungsi untuk inisialisasi pemilihan avatar
@@ -303,6 +302,7 @@ async function handleFormSubmit(form, event) {
         }
     } catch (error) {
         console.error('Form submission error:', error);
+        // Tampilkan notifikasi error
         showNotification(error.message, 'error');
     } finally {
         // Hide loading state
@@ -311,7 +311,7 @@ async function handleFormSubmit(form, event) {
     }
 }
 
-// Fungsi untuk handle login
+// FUNGSI UTAMA: Handle login dengan auto-clear password saat gagal
 async function handleLogin() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -319,15 +319,40 @@ async function handleLogin() {
     
     console.log('Attempting login for:', email);
     
+    // Simpan password sementara untuk digunakan nanti
+    const originalPassword = password;
+    
+    // Reset error states - khusus reset password field
+    const emailField = document.getElementById('loginEmail');
+    const passwordField = document.getElementById('loginPassword');
+    
+    if (emailField) {
+        emailField.classList.remove('is-invalid', 'is-valid');
+        // Reset warna email ke normal
+        emailField.style.borderColor = '';
+        emailField.style.boxShadow = '';
+    }
+    
+    if (passwordField) {
+        passwordField.classList.remove('is-invalid', 'is-valid');
+        // Reset warna password ke normal
+        passwordField.style.borderColor = '';
+        passwordField.style.boxShadow = '';
+        passwordField.style.backgroundColor = '';
+    }
+    
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
         console.log('✅ Login successful:', user.email);
-        showNotification('Login berhasil! Mengarahkan ke dashboard...', 'success');
         
-        // Set persistence based on remember me
-        // Note: Firebase Auth persistence is handled automatically
+        // Tambahkan efek visual sukses pada password field
+        passwordField.classList.add('is-valid');
+        passwordField.style.borderColor = 'var(--success-color)';
+        passwordField.style.backgroundColor = 'rgba(81, 207, 102, 0.05)';
+        
+        showNotification('Login berhasil! Mengarahkan ke dashboard...', 'success');
         
         // Redirect to dashboard after short delay
         setTimeout(() => {
@@ -338,32 +363,103 @@ async function handleLogin() {
         console.error('❌ Login error:', error);
         
         let errorMessage = 'Terjadi kesalahan saat login';
+        let errorFieldId = null;
+        let shouldClearPassword = false;
         
         switch (error.code) {
             case 'auth/invalid-email':
-                errorMessage = 'Format email tidak valid';
+                errorMessage = 'Format email tidak valid. Contoh: nama@domain.com';
+                errorFieldId = 'loginEmail';
                 break;
             case 'auth/user-disabled':
                 errorMessage = 'Akun ini telah dinonaktifkan';
+                shouldClearPassword = true;
                 break;
             case 'auth/user-not-found':
-                errorMessage = 'Akun tidak ditemukan';
+                errorMessage = 'Email tidak ditemukan. Silakan periksa kembali atau daftar akun baru';
+                errorFieldId = 'loginEmail';
+                shouldClearPassword = true;
                 break;
             case 'auth/wrong-password':
-                errorMessage = 'Kata sandi salah';
+                errorMessage = 'Kata sandi salah. Silakan coba lagi';
+                errorFieldId = 'loginPassword';
+                shouldClearPassword = true; // CLEAR PASSWORD!
                 break;
             case 'auth/too-many-requests':
-                errorMessage = 'Terlalu banyak percobaan login. Coba lagi nanti';
+                errorMessage = 'Terlalu banyak percobaan login. Tunggu beberapa saat atau coba reset password';
+                shouldClearPassword = true;
+                break;
+            case 'auth/network-request-failed':
+                errorMessage = 'Koneksi internet bermasalah. Periksa koneksi Anda';
                 break;
             default:
-                errorMessage = error.message;
+                errorMessage = 'Gagal login. Silakan coba lagi nanti';
+                shouldClearPassword = true;
         }
+        
+        // CLEAR PASSWORD jika login gagal
+        if (shouldClearPassword) {
+            passwordField.value = '';
+            
+            // Tambahkan efek visual bahwa password telah dihapus
+            passwordField.style.backgroundColor = 'rgba(255, 107, 107, 0.1)';
+            passwordField.placeholder = 'Masukkan kata sandi yang benar';
+            
+            // Reset placeholder setelah beberapa detik
+            setTimeout(() => {
+                passwordField.placeholder = 'Masukkan kata sandi Anda';
+                passwordField.style.backgroundColor = '';
+            }, 2000);
+        }
+        
+        // Highlight field yang bermasalah dengan warna merah
+        if (errorFieldId) {
+            const field = document.getElementById(errorFieldId);
+            if (field) {
+                // Tambahkan kelas invalid untuk styling CSS
+                field.classList.add('is-invalid');
+                field.classList.remove('is-valid');
+                
+                // Fokus ke field yang error
+                field.focus();
+                
+                // Jika error di password, tambahkan efek visual khusus
+                if (errorFieldId === 'loginPassword') {
+                    // Efek visual tambahan untuk password error
+                    field.style.borderColor = 'var(--danger-color)';
+                    field.style.boxShadow = '0 0 0 0.3rem rgba(255, 107, 107, 0.3)';
+                    field.style.backgroundColor = 'rgba(255, 107, 107, 0.05)';
+                    
+                    // Tambahkan efek getar
+                    field.style.animation = 'shake 0.5s ease-in-out';
+                    
+                    // Reset animasi setelah selesai
+                    setTimeout(() => {
+                        field.style.animation = '';
+                    }, 500);
+                }
+                
+                // Jika error di email, reset password field
+                if (errorFieldId === 'loginEmail') {
+                    const passwordField = document.getElementById('loginPassword');
+                    if (passwordField) {
+                        passwordField.classList.remove('is-invalid', 'is-valid');
+                        passwordField.style.borderColor = '';
+                        passwordField.style.boxShadow = '';
+                        passwordField.style.backgroundColor = '';
+                    }
+                }
+            }
+        }
+        
+        // Tampilkan notifikasi
+        showNotification(errorMessage, 'error');
         
         throw new Error(errorMessage);
     }
 }
 
-// Fungsi untuk handle registrasi
+// Fungsi untuk handle registrasi dengan auto-clear password saat gagal
 async function handleRegistration() {
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
@@ -371,8 +467,22 @@ async function handleRegistration() {
     const childAge = document.getElementById('childAge').value;
     const childGrade = document.getElementById('childGrade').value;
     const childAvatar = document.getElementById('childAvatar').value;
+    const agreeTerms = document.getElementById('agreeTerms').checked;
     
     console.log('Attempting registration for:', email);
+    
+    // Reset semua field error
+    const fields = ['registerEmail', 'registerPassword', 'confirmPassword', 'childName', 'childAge', 'childGrade', 'agreeTerms'];
+    fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.classList.remove('is-invalid', 'is-valid');
+            // Reset styling
+            field.style.borderColor = '';
+            field.style.boxShadow = '';
+            field.style.backgroundColor = '';
+        }
+    });
     
     try {
         // Create user account
@@ -400,6 +510,13 @@ async function handleRegistration() {
             displayName: childName
         });
         
+        // Efek visual sukses untuk password
+        const passwordField = document.getElementById('registerPassword');
+        if (passwordField) {
+            passwordField.classList.add('is-valid');
+            passwordField.style.borderColor = 'var(--success-color)';
+        }
+        
         showNotification('Pendaftaran berhasil! Mengarahkan ke dashboard...', 'success');
         
         // Redirect to dashboard after short delay
@@ -411,23 +528,90 @@ async function handleRegistration() {
         console.error('❌ Registration error:', error);
         
         let errorMessage = 'Terjadi kesalahan saat pendaftaran';
+        let errorFieldId = null;
+        let shouldClearPasswords = false;
         
         switch (error.code) {
             case 'auth/email-already-in-use':
                 errorMessage = 'Email sudah digunakan. Silakan login atau gunakan email lain';
+                errorFieldId = 'registerEmail';
+                shouldClearPasswords = true;
                 break;
             case 'auth/invalid-email':
                 errorMessage = 'Format email tidak valid';
+                errorFieldId = 'registerEmail';
                 break;
             case 'auth/weak-password':
                 errorMessage = 'Kata sandi terlalu lemah';
+                errorFieldId = 'registerPassword';
+                shouldClearPasswords = true;
                 break;
             case 'auth/operation-not-allowed':
                 errorMessage = 'Operasi tidak diizinkan. Hubungi administrator';
+                shouldClearPasswords = true;
                 break;
             default:
                 errorMessage = error.message;
+                shouldClearPasswords = true;
         }
+        
+        // CLEAR PASSWORD jika registrasi gagal
+        if (shouldClearPasswords) {
+            const passwordField = document.getElementById('registerPassword');
+            const confirmPasswordField = document.getElementById('confirmPassword');
+            
+            if (passwordField) {
+                passwordField.value = '';
+                passwordField.style.backgroundColor = 'rgba(255, 107, 107, 0.1)';
+                passwordField.placeholder = 'Buat kata sandi baru yang lebih kuat';
+                
+                // Reset placeholder setelah beberapa detik
+                setTimeout(() => {
+                    passwordField.placeholder = 'Buat kata sandi yang kuat';
+                    passwordField.style.backgroundColor = '';
+                }, 2000);
+            }
+            
+            if (confirmPasswordField) {
+                confirmPasswordField.value = '';
+                confirmPasswordField.style.backgroundColor = 'rgba(255, 107, 107, 0.1)';
+                confirmPasswordField.placeholder = 'Konfirmasi kata sandi baru';
+                
+                // Reset placeholder setelah beberapa detik
+                setTimeout(() => {
+                    confirmPasswordField.placeholder = 'Ulangi kata sandi Anda';
+                    confirmPasswordField.style.backgroundColor = '';
+                }, 2000);
+            }
+        }
+        
+        // Highlight field yang bermasalah dengan warna merah
+        if (errorFieldId) {
+            const field = document.getElementById(errorFieldId);
+            if (field) {
+                field.classList.add('is-invalid');
+                field.classList.remove('is-valid');
+                field.focus();
+                
+                // Efek visual khusus untuk password error
+                if (errorFieldId === 'registerPassword') {
+                    field.style.borderColor = 'var(--danger-color)';
+                    field.style.boxShadow = '0 0 0 0.3rem rgba(255, 107, 107, 0.3)';
+                    field.style.backgroundColor = 'rgba(255, 107, 107, 0.05)';
+                    
+                    // Tambahkan efek getar
+                    field.style.animation = 'shake 0.5s ease-in-out';
+                    
+                    // Reset animasi setelah selesai
+                    setTimeout(() => {
+                        field.style.animation = '';
+                    }, 500);
+                }
+            }
+        }
+        
+        // Tampilkan notifikasi
+        showNotification(errorMessage, 'error');
         
         throw new Error(errorMessage);
     }
@@ -519,49 +703,74 @@ function checkExistingAuth() {
     });
 }
 
-// Fungsi untuk menampilkan notifikasi
+// Fungsi untuk menampilkan notifikasi yang lebih baik
 function showNotification(message, type = 'info', duration = 5000) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `alert alert-${type} alert-dismissible fade show`;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-        min-width: 300px;
-        max-width: 500px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        border: none;
-        border-radius: 15px;
-    `;
+    // Hapus notifikasi lama jika ada
+    const existingAlerts = document.querySelectorAll('.custom-alert');
+    existingAlerts.forEach(alert => {
+        if (alert.parentNode) {
+            alert.remove();
+        }
+    });
     
+    // Tentukan ikon berdasarkan jenis notifikasi
     const typeIcons = {
-        'success': '✅',
-        'error': '❌',
-        'warning': '⚠️',
-        'info': 'ℹ️'
+        'success': '✓',
+        'error': '✗',
+        'warning': '⚠',
+        'info': 'ℹ'
     };
     
+    const typeTitles = {
+        'success': 'Berhasil',
+        'error': 'Gagal',
+        'warning': 'Peringatan',
+        'info': 'Informasi'
+    };
+    
+    // Buat elemen notifikasi
+    const notification = document.createElement('div');
+    notification.className = `custom-alert alert-${type}`;
+    notification.setAttribute('role', 'alert');
+    
     notification.innerHTML = `
-        <div class="d-flex align-items-center">
-            <span class="me-2" style="font-size: 1.2rem;">${typeIcons[type] || 'ℹ️'}</span>
-            <span class="flex-grow-1">${message}</span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="alert-content">
+            <span class="alert-icon">${typeIcons[type] || 'ℹ'}</span>
+            <div class="flex-grow-1">
+                <strong style="display: block; margin-bottom: 2px;">${typeTitles[type] || 'Informasi'}</strong>
+                <div class="alert-message" style="font-size: 0.9rem;">${message}</div>
+            </div>
+            <button type="button" class="alert-close" onclick="this.parentElement.parentElement.remove()">
+                &times;
+            </button>
         </div>
     `;
     
+    // Tambahkan ke body
     document.body.appendChild(notification);
     
-    // Initialize Bootstrap alert
-    const bsAlert = new bootstrap.Alert(notification);
-    
-    // Auto remove after duration
-    setTimeout(() => {
+    // Hapus otomatis setelah durasi tertentu
+    const removeTimeout = setTimeout(() => {
         if (notification.parentNode) {
-            bsAlert.close();
+            notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
         }
     }, duration);
+    
+    // Tambahkan event listener untuk tombol close
+    const closeBtn = notification.querySelector('.alert-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            clearTimeout(removeTimeout);
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        });
+    }
     
     return notification;
 }

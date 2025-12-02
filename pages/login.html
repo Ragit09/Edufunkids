@@ -41,17 +41,17 @@
                 <div class="card-body">
                     <!-- Tabs untuk Login dan Daftar -->
                     <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab">
-            <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
-        </button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="register-tab" data-bs-toggle="pill" data-bs-target="#register" type="button" role="tab">
-            <i class="bi bi-person-plus me-2"></i>Buat Akun
-        </button>
-    </li>
-</ul>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="pill" data-bs-target="#register" type="button" role="tab">
+                                <i class="bi bi-person-plus me-2"></i>Buat Akun
+                            </button>
+                        </li>
+                    </ul>
 
                     <div class="tab-content" id="authTabsContent">
                         <!-- Form Login -->
@@ -64,7 +64,6 @@
                                     <input type="email" class="form-control" id="loginEmail" 
                                            placeholder="contoh: user@gmail.com" required>
                                     <div class="form-text">Masukkan alamat email yang valid</div>
-                                    <div class="invalid-feedback">Harap masukkan email yang valid</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="loginPassword" class="form-label">
@@ -73,7 +72,6 @@
                                     <input type="password" class="form-control" id="loginPassword" 
                                            placeholder="Masukkan kata sandi Anda" required>
                                     <div class="form-text">Kata sandi minimal 8 karakter</div>
-                                    <div class="invalid-feedback">Harap masukkan kata sandi</div>
                                 </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -104,7 +102,6 @@
                                     <input type="email" class="form-control" id="registerEmail" 
                                            placeholder="contoh: orangtua@gmail.com" required>
                                     <div class="form-text">Masukkan alamat email yang aktif</div>
-                                    <div class="invalid-feedback">Harap masukkan email yang valid</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="registerPassword" class="form-label">
@@ -113,7 +110,6 @@
                                     <input type="password" class="form-control" id="registerPassword" 
                                            placeholder="Buat kata sandi yang kuat" minlength="8" required>
                                     <div class="form-text">Kata sandi minimal 8 karakter, mengandung huruf besar, kecil, dan angka</div>
-                                    <div class="invalid-feedback">Kata sandi minimal 8 karakter</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="confirmPassword" class="form-label">
@@ -122,7 +118,6 @@
                                     <input type="password" class="form-control" id="confirmPassword" 
                                            placeholder="Ulangi kata sandi Anda" required>
                                     <div class="form-text">Ketik ulang kata sandi untuk konfirmasi</div>
-                                    <div class="invalid-feedback">Konfirmasi kata sandi tidak cocok</div>
                                 </div>
                                 
                                 <hr class="my-4">
@@ -135,14 +130,12 @@
                                     <input type="text" class="form-control" id="childName" 
                                            placeholder="Masukkan nama lengkap anak" required>
                                     <div class="form-text">Isi dengan nama lengkap anak</div>
-                                    <div class="invalid-feedback">Harap masukkan nama anak</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="childAge" class="form-label">Usia Anak</label>
                                     <input type="number" class="form-control" id="childAge" 
                                            placeholder="Masukkan usia anak" min="3" max="12" required>
                                     <div class="form-text">Usia harus antara 3-12 tahun</div>
-                                    <div class="invalid-feedback">Usia harus antara 3-12 tahun</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="childGrade" class="form-label">Kelas Anak</label>
@@ -157,7 +150,6 @@
                                         <option value="6">Kelas 6</option>
                                     </select>
                                     <div class="form-text">Pilih kelas sesuai tingkat pendidikan anak</div>
-                                    <div class="invalid-feedback">Harap pilih kelas</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="childAvatar" class="form-label">Pilih Avatar</label>
@@ -176,7 +168,6 @@
                                     <label class="form-check-label" for="agreeTerms">
                                         Saya setuju dengan <a href="#" class="text-primary">Syarat & Ketentuan</a>
                                     </label>
-                                    <div class="invalid-feedback">Anda harus menyetujui syarat & ketentuan</div>
                                 </div>
                                 
                                 <button type="submit" class="btn btn-primary w-100 py-2">
@@ -192,16 +183,21 @@
     </div>
 
     <!-- Footer -->
-    <!-- Footer -->
-<footer class="footer bg-dark text-white py-3 mt-5"> <!-- py-5 diubah menjadi py-3 -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <p class="mb-0">&copy; 2025 Platform Pembelajaran Anak. All rights reserved.</p>
+    <footer class="footer bg-dark text-white py-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Platform Pembelajaran Anak. All rights reserved.</p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <!-- Tombol demo untuk testing notifikasi -->
+    <button class="demo-notification-btn" onclick="showNotification('Ini adalah contoh notifikasi error!', 'error')">
+        ⚠
+    </button>
+
     <script type="module" src="../js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

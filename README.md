@@ -3,9 +3,9 @@ EduFunKids – Platform Edukasi Interaktif Anak
 
 Nama Kelompok & Anggota
 Kelompok 7
-Ragit Dwi Saputra
-Amalia Aisyaturadia
-Nadia Syahira
+Ragit Dwi Saputra             membuat ui design,coding,modul login,coding modul,hosting.
+Amalia Aisyaturadia           membuat materi edukasi, membuat pertanyaan kuis.
+Nadia Syahira                 testing, membuat readme.md, menambahkan backsound pada web.
 
 Deskripsi Singkat Aplikasi
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
@@ -66,10 +66,13 @@ Screenshot Halaman Utama
 
 Catatan Tambahan
 Aplikasi optimal di tablet, laptop/PC.
+akses web menggunakan chrome agar voive narator menggunakan bahasa indonesia
 Musik autoplay dapat diblokir oleh browser tertentu.
 File audio wajib berada pada folder music/.
+file foto wajib didalam folder img/
 
 Hal-hal Penting yang Perlu Diketahui
+masih ada beberapagame yang harus di buat sementar hanya 3.
 Tampilan masih dapat dikembangkan untuk lebih modern.
 Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 

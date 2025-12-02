@@ -215,6 +215,15 @@ function showSection(sectionId) {
         
         // Load section content if needed
         loadSectionContent(sectionId);
+        
+        // Jika kembali ke home, update game progress
+        if (sectionId === 'home') {
+            setTimeout(() => {
+                updateGameProgressDisplay(userData);
+                updateHomeStats(userData);
+                updateContinueLearning(userData);
+            }, 100);
+        }
     }
 }
 
@@ -235,6 +244,7 @@ function loadSectionContent(sectionId) {
             break;
         case 'home':
             updateHomeStats();
+            updateGameProgressDisplay();
             break;
     }
 }
@@ -312,6 +322,12 @@ async function initUserData() {
                         }
                         
                         updateUserInterface(userData, user.email);
+                        
+                        // Update game progress di home section setelah data dimuat
+                        setTimeout(() => {
+                            updateGameProgressDisplay(userData);
+                        }, 500);
+                        
                         resolve(userData);
                     } else {
                         console.log('❌ No user data found, creating new user data...');
@@ -636,46 +652,79 @@ function updateGameProgressDisplay(userData = null) {
     if (!userData) userData = window.userData;
     if (!userData) return;
     
-    const gameStats = calculateGameStats(userData);
     const gameProgress = userData.gameProgress || {};
     
-    // Update game cards dengan progress terbaru
-    updateGameCardProgress('tebak-huruf', gameProgress['tebak-huruf']);
-    updateGameCardProgress('hitung-cepat', gameProgress['hitung-cepat']);
-    updateGameCardProgress('mewarnai', gameProgress['mewarnai']);
+    // Update semua game cards di home section
+    updateHomeGameCard('tebak-huruf', gameProgress['tebak-huruf']);
+    updateHomeGameCard('hitung-cepat', gameProgress['hitung-cepat']);
+    updateHomeGameCard('mewarnai', gameProgress['mewarnai']);
 }
 
-// Fungsi untuk update progress pada game card individual
-function updateGameCardProgress(gameId, gameData) {
-    if (!gameData) return;
+// Fungsi untuk update progress pada game card di home section
+function updateHomeGameCard(gameId, gameData) {
+    if (!gameData) {
+        // Inisialisasi data default jika tidak ada
+        gameData = {
+            completedLevels: [],
+            badges: [],
+            highestScore: 0,
+            totalStars: 0
+        };
+    }
     
     const completedLevels = gameData.completedLevels || [];
     const progressPercent = (completedLevels.length / 5) * 100;
     const badgesCount = gameData.badges ? gameData.badges.length : 0;
     
-    console.log(`Updating ${gameId} progress: ${progressPercent}%, badges: ${badgesCount}`);
+    console.log(`Updating home ${gameId} progress: ${progressPercent}%, badges: ${badgesCount}`);
     
-    // Cari game card dan update progress-nya
-    const gameCards = document.querySelectorAll('.game-card');
+    // Cari game card di home section dan update progress-nya
+    const gameCards = document.querySelectorAll('#home .game-card');
     gameCards.forEach(card => {
         const button = card.querySelector('button');
-        if (button && button.getAttribute('onclick')?.includes(gameId)) {
-            // Update progress bar jika ada
-            const progressBar = card.querySelector('.progress-bar');
-            if (progressBar) {
-                progressBar.style.width = `${progressPercent}%`;
-            }
+        if (button && button.getAttribute('onclick')?.includes('goToGamesDashboard')) {
+            const gameIcon = card.querySelector('.game-icon i');
+            if (!gameIcon) return;
             
-            // Update badge count jika ada
-            const badgeElements = card.querySelectorAll('.badge-count');
-            badgeElements.forEach(badge => {
-                badge.textContent = `${badgesCount}/2`;
-            });
+            // Identifikasi game berdasarkan icon
+            const isTebakHuruf = gameIcon.classList.contains('bi-fonts');
+            const isHitungCepat = gameIcon.classList.contains('bi-calculator');
+            const isMewarnai = gameIcon.classList.contains('bi-palette');
             
-            // Update progress text jika ada
-            const progressText = card.querySelector('.progress-text');
-            if (progressText) {
-                progressText.textContent = `${Math.round(progressPercent)}% selesai`;
+            let shouldUpdate = false;
+            if (gameId === 'tebak-huruf' && isTebakHuruf) shouldUpdate = true;
+            if (gameId === 'hitung-cepat' && isHitungCepat) shouldUpdate = true;
+            if (gameId === 'mewarnai' && isMewarnai) shouldUpdate = true;
+            
+            if (shouldUpdate) {
+                // Update progress bar
+                const progressBar = card.querySelector('.progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = `${progressPercent}%`;
+                }
+                
+                // Update badge count
+                const badgeCountSpan = card.querySelector('.badge-count');
+                if (badgeCountSpan) {
+                    // Tentukan jumlah maksimal lencana berdasarkan game
+                    let maxBadges = 2; // Default
+                    if (gameId === 'mewarnai') maxBadges = 3;
+                    badgeCountSpan.textContent = `${badgesCount}/${maxBadges}`;
+                }
+                
+                // Update progress text
+                const progressText = card.querySelector('.progress-text');
+                if (progressText) {
+                    progressText.textContent = `${Math.round(progressPercent)}% selesai`;
+                }
+                
+                // Update game title (opsional, untuk memastikan game yang benar)
+                const gameTitle = card.querySelector('h6');
+                if (gameTitle) {
+                    if (gameId === 'tebak-huruf') gameTitle.textContent = 'Tebak Huruf';
+                    if (gameId === 'hitung-cepat') gameTitle.textContent = 'Hitung Cepat';
+                    if (gameId === 'mewarnai') gameTitle.textContent = 'Mewarnai';
+                }
             }
         }
     });
@@ -768,6 +817,11 @@ function loadDashboardContent() {
     
     // Initialize counters animation
     initCounters();
+    
+    // Update game progress setelah semua konten dimuat
+    setTimeout(() => {
+        updateGameProgressDisplay(userData);
+    }, 500);
 }
 
 // Fungsi untuk animasi counter
@@ -952,39 +1006,45 @@ function loadGamesContent() {
         }
     ];
     
-    gamesCatalog.innerHTML = games.map(game => `
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="game-card" data-game="${game.id}">
-                <div class="game-icon bg-${game.color}">
-                    <i class="bi ${game.icon}"></i>
-                </div>
-                <div class="game-content">
-                    <h6>${game.title}</h6>
-                    <p>${game.description}</p>
-                    <div class="game-progress-info">
-                        <div class="progress mb-2">
-                            <div class="progress-bar" style="width: ${game.progress}%"></div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-${game.color}">${game.category}</span>
-                            <small class="text-muted progress-text">${Math.round(game.progress)}% selesai</small>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-1">
-                            <small class="text-muted">
-                                <i class="bi bi-trophy-fill text-warning"></i>
-                                <span class="badge-count">${game.badges}/2</span> Lencana
-                            </small>
-                        </div>
+    gamesCatalog.innerHTML = games.map(game => {
+        const progressPercent = game.progress;
+        const badgesCount = game.badges || 0;
+        const maxBadges = game.id === 'mewarnai' ? 3 : 2;
+        
+        return `
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="game-card" data-game="${game.id}">
+                    <div class="game-icon bg-${game.color}">
+                        <i class="bi ${game.icon}"></i>
                     </div>
-                    <div class="mt-3">
-                        <button class="btn btn-primary btn-sm w-100" onclick="goToGamesDashboard()">
-                            Main Sekarang
-                        </button>
+                    <div class="game-content">
+                        <h6>${game.title}</h6>
+                        <p>${game.description}</p>
+                        <div class="game-progress-info">
+                            <div class="progress mb-2">
+                                <div class="progress-bar" style="width: ${progressPercent}%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-${game.color}">${game.category}</span>
+                                <small class="text-muted progress-text">${Math.round(game.progress)}% selesai</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <small class="text-muted">
+                                    <i class="bi bi-trophy-fill text-warning"></i>
+                                    <span class="badge-count">${badgesCount}/${maxBadges}</span> Lencana
+                                </small>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-primary btn-sm w-100" onclick="goToGamesDashboard()">
+                                Main Sekarang
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Fungsi untuk load progress content

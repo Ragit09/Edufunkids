@@ -205,18 +205,88 @@ body {
     opacity: 0.7;
 }
 
+/* Input Valid (Hijau) */
 .form-control.is-valid {
-    border-color: var(--success-color);
+    border-color: var(--success-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2351cf66' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: 2.5rem;
 }
 
+/* Input Invalid (Merah) - KHUSUS untuk Password */
 .form-control.is-invalid {
+    border-color: var(--danger-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23ff6b6b'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23ff6b6b' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: 2.5rem;
+    animation: shake 0.5s ease-in-out;
+    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.15);
+}
+
+/* Efek khusus untuk password error */
+#loginPassword.is-invalid,
+#registerPassword.is-invalid,
+#confirmPassword.is-invalid {
+    border-color: var(--danger-color) !important;
+    background-color: rgba(255, 107, 107, 0.05);
+    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+}
+
+/* Efek focus saat password error */
+#loginPassword.is-invalid:focus,
+#registerPassword.is-invalid:focus,
+#confirmPassword.is-invalid:focus {
+    border-color: var(--danger-color) !important;
+    box-shadow: 0 0 0 0.3rem rgba(255, 107, 107, 0.3) !important;
+}
+
+/* Select Invalid (Merah) */
+.form-select.is-invalid {
+    border-color: var(--danger-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23ff6b6b'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23ff6b6b' stroke='none'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-position: right calc(.375em + 2.1875rem) center, right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem), calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: 4.125rem;
+}
+
+/* Checkbox Invalid (Merah) */
+.form-check-input.is-invalid {
+    border-color: var(--danger-color) !important;
+}
+
+.form-check-input.is-invalid:checked {
+    background-color: var(--danger-color);
     border-color: var(--danger-color);
 }
 
+/* Sembunyikan pesan error teks merah */
+.invalid-feedback {
+    display: none !important;
+}
+
+/* Tampilkan pesan bantuan tetap ada */
 .form-text {
     font-size: 0.875rem;
     color: #6c757d;
     margin-top: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+/* Ubah warna pesan bantuan saat input error */
+.form-control.is-invalid ~ .form-text {
+    color: var(--danger-color);
+    font-weight: 500;
+}
+
+/* Pesan khusus untuk password error */
+#loginPassword.is-invalid ~ .form-text,
+#registerPassword.is-invalid ~ .form-text {
+    color: var(--danger-color);
+    font-weight: 600;
 }
 
 .form-check-input:checked {
@@ -300,7 +370,6 @@ body {
     transform: none !important;
 }
 
-/* Footer */
 /* Footer */
 .footer {
     padding: 1rem 0 !important; /* Dikurangi dari 2rem menjadi 1rem */
@@ -436,4 +505,171 @@ body {
 .strength-strong {
     background: var(--success-color);
     width: 100%;
+}
+
+/* ==================== */
+/* NOTIFICATION STYLES  */
+/* ==================== */
+
+/* Custom Alert Notification */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 500px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-out 4.7s forwards;
+    opacity: 1;
+    transform: translateX(0);
+    background: white;
+}
+
+.custom-alert.alert-success {
+    background: linear-gradient(135deg, var(--success-color), #40c057);
+    color: white;
+    border-left: 5px solid #2b8a3e;
+}
+
+.custom-alert.alert-danger {
+    background: linear-gradient(135deg, var(--danger-color), #ff5252);
+    color: white;
+    border-left: 5px solid #c92a2a;
+}
+
+.custom-alert.alert-warning {
+    background: linear-gradient(135deg, var(--warning-color), #ffd43b);
+    color: #212529;
+    border-left: 5px solid #e67700;
+}
+
+.custom-alert.alert-info {
+    background: linear-gradient(135deg, #339af0, #4dabf7);
+    color: white;
+    border-left: 5px solid #1971c2;
+}
+
+.custom-alert .alert-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.custom-alert .alert-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.custom-alert .alert-message {
+    flex-grow: 1;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.custom-alert .alert-close {
+    background: none;
+    border: none;
+    color: inherit;
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.custom-alert .alert-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Untuk notifikasi yang lebih kecil pada mobile */
+@media (max-width: 576px) {
+    .custom-alert {
+        min-width: 280px;
+        max-width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        margin: 0 auto;
+        top: 80px;
+    }
+    
+    .custom-alert .alert-content {
+        gap: 8px;
+    }
+    
+    .custom-alert .alert-icon {
+        font-size: 1.2rem;
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Demo style untuk testing notifikasi */
+.demo-notification-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
+    transition: all 0.3s ease;
+    display: none; /* Sembunyikan di production */
+}
+
+.demo-notification-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(106, 17, 203, 0.4);
 }
