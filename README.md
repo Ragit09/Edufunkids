@@ -1,11 +1,14 @@
 Nama Project
 EduFunKids – Platform Edukasi Interaktif Anak
 
-Nama Kelompok & Anggota
-Kelompok 7
-Ragit Dwi Saputra             membuat ui design,coding,modul login,coding modul,hosting.
-Amalia Aisyaturadia           membuat materi edukasi, membuat pertanyaan kuis.
-Nadia Syahira                 testing, membuat readme.md, menambahkan backsound pada web.
+## 👥 Identitas Kelompok
+- **Nama Kelompok :** [kelompok 7]
+- **Anggota & Jobdesk :**
+  | Nama Anggota | Tugas / Jobdesk |
+  |--------------|-----------------|
+  | [Ragit Dwi Saputra] | Requirement Gathering, Implementasi Frontend |
+  | [amalia Aisyaruradia] | Design (UML, UI), SRS, materi edukasi, materi kuis |
+  | [Nadia Syahira] | Implementasi Backend, Testing & Deployment |
 
 Deskripsi Singkat Aplikasi
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
