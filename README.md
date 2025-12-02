@@ -1,4 +1,4 @@
-Nama Project
+# 📌 Final Project RPL – Sistem [Edufunkids]
 EduFunKids – Platform Edukasi Interaktif Anak
 
 ## 👥 Identitas Kelompok
@@ -10,8 +10,20 @@ EduFunKids – Platform Edukasi Interaktif Anak
   | [amalia Aisyaruradia] | Design (UML, UI), SRS, materi edukasi, materi kuis |
   | [Nadia Syahira] | Implementasi Backend, Testing & Deployment |
 
-Deskripsi Singkat Aplikasi
+## Sistem ini dibuat berdasarkan 
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
+Sistem ini dibuat berdasarkan permintaan dari klien (kelompok lain) dengan tujuan untuk menyelesaikan permasalahan:
+- [Kurangnya media pembelajaran interaktif untuk anak usia dini yang menarik, mudah dipahami, dan dapat diakses secara online.]
+- [Materi belajar untuk anak-anak sering monoton sehingga anak cepat bosan dan kurang fokus.]
+- [Orang tua maupun guru membutuhkan platform yang dapat membantu anak belajar sambil bermain.]
+Solusi yang dikembangkan berupa aplikasi:
+- [membuatkan aplikasi berbasis Web]
+yang menyediakan fitur utama:
+- Halaman Dashboard berisi menu pembelajaran.
+- Materi interaktif seperti warna, angka, huruf, hewan, dan bentuk.
+- Mini games edukatif sebagai media belajar sambil bermain.
+- Audio & visual interaktif untuk membantu anak memahami materi.
+- Desain UI/UX ramah anak yang colorful, simpel, dan mudah digunakan.
 
 Tujuan Sistem / Permasalahan yang Diselesaikan
 Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
