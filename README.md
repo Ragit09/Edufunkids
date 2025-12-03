@@ -42,6 +42,11 @@ EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancan
 
 ## Cara Menjalankan Aplikasi
 Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:
+
+```bash
+[cd weddinglink](https://ragit09.github.io/Edufunkids/)
+```
+
 https://ragit09.github.io/Edufunkids/
 
 ## Cara Instalasi
