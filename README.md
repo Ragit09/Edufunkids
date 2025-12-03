@@ -10,22 +10,24 @@ EduFunKids – Platform Edukasi Interaktif Anak
   | [amalia Aisyaruradia] | Design (UML, UI), SRS, materi edukasi, materi kuis |
   | [Nadia Syahira] | Implementasi Backend, Testing & Deployment |
 
-## Deskripsi Singkat Aplikasi 
+## 📱Deskripsi Singkat Aplikasi 
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
 ### Sistem ini dibuat berdasarkan permintaan dari klien kelompok 5 dengan tujuan untuk menyelesaikan permasalahan:
-- [Kurangnya media pembelajaran interaktif untuk anak usia dini yang menarik, mudah dipahami, dan dapat diakses secara online.]
-- [Materi belajar untuk anak-anak sering monoton sehingga anak cepat bosan dan kurang fokus.]
-- [Orang tua maupun guru membutuhkan platform yang dapat membantu anak belajar sambil bermain.]
+- Kurangnya media pembelajaran interaktif untuk anak usia dini yang menarik, mudah dipahami, dan dapat diakses secara online.
+- Materi belajar untuk anak-anak sering monoton sehingga anak cepat bosan dan kurang fokus.
+- Orang tua maupun guru membutuhkan platform yang dapat membantu anak belajar sambil bermain.
 ### Solusi yang dikembangkan berupa aplikasi:
-- [membuatkan aplikasi berbasis Web]
+- membuatkan aplikasi berbasis Web
+- membuat materi edukasi yang menyenangkan
+- membuat game seru edukasi
 ### yang menyediakan fitur utama:
-- [Halaman Dashboard berisi menu pembelajaran.]
-- [Materi interaktif seperti warna, angka, huruf, hewan, dan bentuk.]
-- [Mini games edukatif sebagai media belajar sambil bermain.]
-- [Audio & visual interaktif untuk membantu anak memahami materi.]
-- [Desain UI/UX ramah anak yang colorful, simpel, dan mudah digunakan.]
+- Halaman Dashboard berisi menu pembelajaran.
+- Materi interaktif seperti warna, angka, huruf, hewan, dan bentuk.
+- Mini games edukatif sebagai media belajar sambil bermain.
+- Audio & visual interaktif untuk membantu anak memahami materi.
+- Desain UI/UX ramah anak yang colorful, simpel, dan mudah digunakan.
 
-## Tujuan Sistem / Permasalahan yang Diselesaikan
+## 🎯Tujuan Sistem / Permasalahan yang Diselesaikan
 - Menyediakan sarana pembelajaran interaktif berbasis web untuk anak-anak.
 - Membantu anak memahami dasar membaca dan berhitung melalui permainan edukatif.
 - Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
@@ -54,6 +56,7 @@ Cukup buka file .html menggunakan browser atau gunakan Live Server pada VSCode.
 ## Cara Konfigurasi
 Pastikan Anda memiliki file konfigurasi Firebase pada bagian:
 
+```bash
 const firebaseConfig = {
   apiKey: "AIzaSyAiu2Z1N2NBbtboHAtyWTeRIENOjkdRGgk",
   authDomain: "edufunkids-8cd92.firebaseapp.com",
@@ -63,6 +66,7 @@ const firebaseConfig = {
   appId: "1:809197357438:web:f42ce4a2779d7507bacb2f",
   measurementId: "G-28NC6QM62J"
 };
+```
 
 ## Cara Menjalankan (Run Project)
 Jalankan secara langsung:
@@ -71,29 +75,36 @@ Jalankan secara langsung:
 - Install ekstensi "Live Server" di VSCode
 - Klik kanan file HTML → Open with Live Server
 
-## Akun Demo (Login)
+## 🔑Akun Demo (Login)
 Gunakan akun berikut jika halaman login diperlukan:
 - Email: demo@edufunkids.com
 - Password: DemoPass123
 
 ## Link Deployment / Link APK 
-Link Deployment: https://ragit09.github.io/Edufunkids/
+Link Deployment: 
+```bash
+https://ragit09.github.io/Edufunkids/
+```
 
 ## Screenshot Halaman Utama 
 ![Packages List](/screenshots/homepage.png)
 
 ## Catatan Tambahan
 - Aplikasi optimal di tablet, laptop/PC.
-- akses web menggunakan chrome agar voive narator menggunakan bahasa indonesia
+- akses web menggunakan chrome agar voice narator menggunakan bahasa indonesia
 - Musik autoplay dapat diblokir oleh browser tertentu.
 - File audio wajib berada pada folder music/.
 - file foto wajib didalam folder img/
 
 ## Hal-hal Penting yang Perlu Diketahui
-- masih ada beberapa game yang harus di buat sementar hanya 3.
+- masih ada beberapa game yang harus di buat sementara hanya 3.
 - Tampilan masih dapat dikembangkan untuk lebih modern.
 - Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 
 ## Keterangan Tugas
 Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
 Dosen Pengampu: Dila Nurlaila, M.Kom
+
+## 📄 Lisensi
+
+© 2025 EduFunKids — Kelompok 7 RPL
