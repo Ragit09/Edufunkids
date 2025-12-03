@@ -51,7 +51,7 @@ https://ragit09.github.io/Edufunkids/
 
 ## Cara Instalasi
 Aplikasi ini berbasis web statis, sehingga tidak memerlukan instalasi khusus.
-Cukup buka file .html menggunakan browser atau gunakan Live Server pada VSCode.
+Cukup buka file index.html menggunakan browser atau gunakan Live Server pada VSCode.
 
 ## Cara Konfigurasi
 Pastikan Anda memiliki file konfigurasi Firebase pada bagian:
