@@ -77,7 +77,7 @@ Gunakan akun berikut jika halaman login diperlukan:
 Link Deployment: https://ragit09.github.io/Edufunkids/
 
 ## Screenshot Halaman Utama 
-/screenshots/homepage.png
+![Packages List](/screenshots/homepage.png)
 
 ## Catatan Tambahan
 - Aplikasi optimal di tablet, laptop/PC.
