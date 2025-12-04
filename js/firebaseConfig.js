@@ -7,7 +7,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.10/firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC68sM53DhWZ5uJysPsDzcsJlf7rFEvu2U",
+  apiKey: "AIzaSyAiu2Z1N2NBbtboHAtyWTeRIENOjkdRGgk",
   authDomain: "edufunkids-8cd92.firebaseapp.com",
   projectId: "edufunkids-8cd92",
   storageBucket: "edufunkids-8cd92.firebasestorage.app",
