@@ -12,7 +12,7 @@ EduFunKids – Platform Edukasi Interaktif Anak
 
 ## 📱Deskripsi Singkat Aplikasi 
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
-### Sistem ini dibuat berdasarkan permintaan dari klien kelompok 5 dengan tujuan untuk menyelesaikan permasalahan:
+### Sistem ini dibuat berdasarkan permintaan dari klien kelompok 3 dengan tujuan untuk menyelesaikan permasalahan:
 - Kurangnya media pembelajaran interaktif untuk anak usia dini yang menarik, mudah dipahami, dan dapat diakses secara online.
 - Materi belajar untuk anak-anak sering monoton sehingga anak cepat bosan dan kurang fokus.
 - Orang tua maupun guru membutuhkan platform yang dapat membantu anak belajar sambil bermain.
