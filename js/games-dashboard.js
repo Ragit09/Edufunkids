@@ -44,7 +44,7 @@ async function initUserData() {
                     const userDoc = await getDoc(doc(db, "users", user.uid));
                     if (userDoc.exists()) {
                         userData = userDoc.data();
-                        console.log('User data loaded:', userData); // Debug
+                        console.log('User data loaded:', userData); // Edit
                         updateGameInterface();
                         resolve(userData);
                     }
