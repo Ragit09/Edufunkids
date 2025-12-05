@@ -7,7 +7,7 @@ EduFunKids – Platform Edukasi Interaktif Anak
   | Nama Anggota | Tugas / Jobdesk |
   |--------------|-----------------|
   | Ragit Dwi Saputra | Requirement Gathering, Implementasi Frontend, Deployment |
-  | Amalia Aisaturadia5 | Design (UML, UI), Implementasi Backend, Materi edukasi, Materi kuis |
+  | Amalia Aisaturadia | Design (UML, UI), Implementasi Backend, Materi edukasi, Materi kuis |
   | Nadia Syahira | Design (UML, UI), Materi Game, Implementasi Backend, Testing |
 
 ## 📱Deskripsi Singkat Aplikasi 
