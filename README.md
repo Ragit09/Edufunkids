@@ -1,4 +1,4 @@
-# 📌 Final Project RPL – Sistem [Edufunkids]
+# 📌 Final Project RPL – Sistem Edufunkids
 EduFunKids – Platform Edukasi Interaktif Anak
 
 ## 👥 Identitas Kelompok
@@ -7,7 +7,7 @@ EduFunKids – Platform Edukasi Interaktif Anak
   | Nama Anggota | Tugas / Jobdesk |
   |--------------|-----------------|
   | Ragit Dwi Saputra | Requirement Gathering, Implementasi Frontend, Deployment |
-  | Amalia Aisaturadia | Design (UML, UI), SRS, Materi edukasi, Materi kuis |
+  | Amalia Aisaturadia5 | Design (UML, UI), SRS, Materi edukasi, Materi kuis |
   | Nadia Syahira | Design (UML, UI), Materi Game, Implementasi Backend, Testing |
 
 ## 📱Deskripsi Singkat Aplikasi 
@@ -40,7 +40,7 @@ EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancan
 - Firebase Firestore – Database untuk penyimpanan data
 - Assets/Music – Folder yang memuat musik dan sound effect
 - Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi,
-  disarankan menggunakan chrome agar narator mengunakan bahasa indonesia.
+  disarankan menggunakan chrom62266e agar narator mengunakan bahasa indonesia.
 
 ## Cara Menjalankan Aplikasi
 Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:
