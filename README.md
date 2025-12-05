@@ -6,9 +6,9 @@ EduFunKids – Platform Edukasi Interaktif Anak
 - **Anggota & Jobdesk :**
   | Nama Anggota | Tugas / Jobdesk |
   |--------------|-----------------|
-  | Ragit Dwi Saputra | Requirement Gathering, Implementasi Frontend |
-  | Amalia Aisaturadia | Design (UML, UI), SRS, materi edukasi, materi kuis |
-  | Nadia Syahira | Implementasi Backend, Testing & Deployment |
+  | Ragit Dwi Saputra | Requirement Gathering, Implementasi Frontend, Deployment |
+  | Amalia Aisaturadia | Design (UML, UI), SRS, Materi edukasi, Materi kuis |
+  | Nadia Syahira | Design (UML, UI),materi Game, Implementasi Backend, Testing |
 
 ## 📱Deskripsi Singkat Aplikasi 
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
