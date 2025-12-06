@@ -40,7 +40,7 @@ EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancan
 - Firebase Firestore – Database untuk penyimpanan data
 - Assets/Music – Folder yang memuat musik dan sound effect
 - Browser (Chrome/Edge/Firefox) – Media menjalankan aplikasi,
-  disarankan menggunakan chrom62266e agar narator mengunakan bahasa indonesia.
+  disarankan menggunakan chrome agar narator mengunakan bahasa indonesia.
 
 ## Cara Menjalankan Aplikasi
 Aplikasi dapat langsung dijalankan tanpa instalasi melalui link berikut:
