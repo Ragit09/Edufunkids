@@ -1,5 +1,4 @@
 # 📌 Final Project RPL – Sistem Edufunkids
-EduFunKids – Platform Edukasi Interaktif Anak
 
 <div align="center">
 
