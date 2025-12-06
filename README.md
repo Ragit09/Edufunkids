@@ -101,6 +101,10 @@ https://ragit09.github.io/Edufunkids/
 - Tampilan masih dapat dikembangkan untuk lebih modern.
 - Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 
+## 📄 Dokumentasi
+- [Product Backlog Kelompok 7](Document/Product%20Backlog_Kelompok%207.pdf)
+- [Sprint Execution Kelompok 7](Document/Sprint%20Execution_Kelompok%207.pdf)
+
 ## Keterangan Tugas
 Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
 Dosen Pengampu: Dila Nurlaila, M.Kom
