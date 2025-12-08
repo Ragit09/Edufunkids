@@ -115,7 +115,7 @@ https://ragit09.github.io/Edufunkids/
 ## 📑 Dokumentasi
 - 📖[Product Backlog Kelompok 7](Document/Product%20Backlog_Kelompok%207.pdf)
 - 📄[Sprint Execution Kelompok 7](Document/Sprint%20Execution_Kelompok%207.pdf)
-- 🎬[Demo Video (YouTube)](https://youtu.be/NWGybUuSts8?feature=shared)
+- 🎬[Demo Video (YouTube)]([https://youtu.be/NWGybUuSts8?feature=shared](https://youtu.be/lZ6TJL3b8kc?si=we0VXfT6f1z3nMqO))
 
 ## Keterangan Tugas
 Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
