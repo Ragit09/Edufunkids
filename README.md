@@ -18,10 +18,8 @@
   | Nama Anggota | Tugas / Jobdesk |
   |--------------|-----------------|
   | Ragit Dwi Saputra | Requirement Gathering, Implementasi Frontend, Deployment, Merancang dan mengembangkan seluruh sistem (frontend & backend). |
-  | Amalia Aisaturadia | Design (UML, UI), Menyusun Sprint Execution Log, Menyusun Product Backlog di Trello, Materi Edukasi, Materi kuis. 
- |
-  | Nadia Syahira | Design (UML, UI), Menyusun Product Backlog di Trello,  Materi game, Membuat presentasi final project, Menyusun Preriview sprint di trello. 
- |
+  | Amalia Aisaturadia | Design (UML, UI), Menyusun Sprint Execution Log, Menyusun Product Backlog di Trello, Materi Edukasi, Materi kuis. |
+  | Nadia Syahira | Design (UML, UI), Menyusun Product Backlog di Trello, Materi game, Membuat PPT, Menyusun Preriview sprint di trello. |
 
 ## 📱Deskripsi Singkat Aplikasi 
 EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancang untuk anak-anak. Aplikasi ini menyediakan permainan edukasi seperti tebak huruf hitung cepat,dan mengambar dilengkapi dengan audio dan tampilan ramah anak. EduFunKids dibuat untuk mempermudah proses belajar melalui metode “belajar sambil bermain”.
