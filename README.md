@@ -1,5 +1,4 @@
 # 📌 Final Project RPL – Sistem Edufunkids
-EduFunKids – Platform Edukasi Interaktif Anak
 
 <div align="center">
 
@@ -45,7 +44,7 @@ EduFunKids adalah aplikasi web edukasi interaktif berbasis browser yang dirancan
 - Menghadirkan media belajar yang mudah diakses di berbagai perangkat (laptop/PC).
 - Memberikan contoh implementasi game edukasi menggunakan web technology dan database Firebase.
 
-## Teknologi yang Digunakan
+## ⚙️Teknologi yang Digunakan
 - HTML5 – Struktur halaman
 - CSS3 – Styling antarmuka
 - JavaScript – Logika game & interaksi
@@ -80,7 +79,7 @@ const firebaseConfig = {
 };
 ```
 
-## Cara Menjalankan (Run Project)
+## 🏃Cara Menjalankan (Run Project)
 Jalankan secara langsung:
 - Buka index.html dengan browser.
 - Jalankan menggunakan Live Server (disarankan):
@@ -92,7 +91,7 @@ Gunakan akun berikut jika halaman login diperlukan:
 - Email: demo@edufunkids.com
 - Password: DemoPass123
 
-## Link Deployment / Link APK 
+## 🔗Link Deployment / Link APK 
 Link Deployment: 
 ```bash
 https://ragit09.github.io/Edufunkids/
@@ -113,9 +112,10 @@ https://ragit09.github.io/Edufunkids/
 - Tampilan masih dapat dikembangkan untuk lebih modern.
 - Firestore tidak menyimpan data secara offline default tanpa konfigurasi tambahan.
 
-## 📄 Dokumentasi
-- [Product Backlog Kelompok 7](Document/Product%20Backlog_Kelompok%207.pdf)
-- [Sprint Execution Kelompok 7](Document/Sprint%20Execution_Kelompok%207.pdf)
+## 📑 Dokumentasi
+- 📖[Product Backlog Kelompok 7](Document/Product%20Backlog_Kelompok%207.pdf)
+- 📄[Sprint Execution Kelompok 7](Document/Sprint%20Execution_Kelompok%207.pdf)
+- 🎬[Demo Video (YouTube)](https://youtu.be/lZ6TJL3b8kc?si=we0VXfT6f1z3nMqO)
 
 ## Keterangan Tugas
 Project ini dibuat untuk memenuhi Tugas Final Project mata kuliah Rekayasa Perangkat Lunak.
