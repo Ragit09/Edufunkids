@@ -107,10 +107,10 @@ function validateForm(form) {
             }
         }
         
-        // Age validation
+        // Age validation - DIUBAH DARI 3-12 MENJADI 7-12
         if (input.id === 'childAge') {
             const age = parseInt(input.value);
-            if (isNaN(age) || age < 3 || age > 12) {
+            if (isNaN(age) || age < 7 || age > 12) {
                 input.classList.add('is-invalid');
                 isValid = false;
                 return;
@@ -484,6 +484,29 @@ async function handleRegistration() {
         }
     });
     
+    // VALIDASI USIA SPESIFIK - TAMBAHAN BARU (7-12 tahun)
+    const childAgeInt = parseInt(childAge);
+    if (childAgeInt < 7 || childAgeInt > 12) {
+        const ageField = document.getElementById('childAge');
+        ageField.classList.add('is-invalid');
+        ageField.classList.remove('is-valid');
+        ageField.focus();
+        
+        // Efek visual error
+        ageField.style.borderColor = 'var(--danger-color)';
+        ageField.style.boxShadow = '0 0 0 0.3rem rgba(255, 107, 107, 0.3)';
+        ageField.style.backgroundColor = 'rgba(255, 107, 107, 0.05)';
+        
+        // Pesan error spesifik untuk usia di bawah 7 tahun
+        if (childAgeInt < 7) {
+            showNotification('Maaf, usia anak harus minimal 7 tahun untuk dapat menggunakan platform EduFunKids', 'error');
+        } else {
+            showNotification('Maaf, usia anak maksimal 12 tahun untuk dapat menggunakan platform EduFunKids', 'error');
+        }
+        
+        throw new Error('Usia anak harus antara 7-12 tahun');
+    }
+    
     try {
         // Create user account
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -669,7 +692,7 @@ async function createDemoAccount() {
     await setDoc(doc(db, "users", user.uid), {
         email: demoEmail,
         childName: 'Anak Demo',
-        childAge: 7,
+        childAge: 7, // Diubah menjadi 7 sesuai aturan baru
         childGrade: '2',
         avatar: '😊',
         points: 150,

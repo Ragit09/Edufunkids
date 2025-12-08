@@ -178,6 +178,8 @@ function updateUserInterface(userData, userEmail) {
     
     if (userData.childAge) {
         document.getElementById('settingsChildAge').value = userData.childAge;
+        // Set placeholder yang jelas
+        document.getElementById('settingsChildAge').placeholder = '7-12';
     }
     
     if (userData.childGrade) {
@@ -353,6 +355,87 @@ function initEventListeners() {
     
     // Confirmation modal
     document.getElementById('confirmActionBtn').addEventListener('click', handleConfirmedAction);
+    
+    // Real-time validation untuk input usia
+    initAgeValidation();
+}
+
+// Fungsi untuk inisialisasi validasi usia real-time
+function initAgeValidation() {
+    const ageInput = document.getElementById('settingsChildAge');
+    if (!ageInput) return;
+    
+    // Reset error state saat focus
+    ageInput.addEventListener('focus', function() {
+        this.classList.remove('is-invalid');
+        this.style.borderColor = '';
+        this.style.boxShadow = '';
+        this.style.backgroundColor = '';
+        this.style.backgroundImage = '';
+        this.style.animation = '';
+        
+        // Update help text
+        const helpText = this.nextElementSibling;
+        if (helpText && helpText.classList.contains('text-muted')) {
+            helpText.innerHTML = '<i class="bi bi-info-circle me-1"></i> Usia harus antara 7-12 tahun';
+            helpText.style.color = '#6c757d';
+        }
+    });
+    
+    // Real-time validation saat input berubah
+    ageInput.addEventListener('input', function() {
+        const value = this.value.trim();
+        const helpText = this.nextElementSibling;
+        
+        // Reset semua styling
+        this.classList.remove('is-invalid', 'is-valid');
+        this.style.borderColor = '';
+        this.style.boxShadow = '';
+        this.style.backgroundColor = '';
+        this.style.backgroundImage = '';
+        this.style.animation = '';
+        
+        if (value === '') {
+            // Kosong - normal state
+            if (helpText && helpText.classList.contains('text-muted')) {
+                helpText.innerHTML = '<i class="bi bi-info-circle me-1"></i> Masukkan usia antara 7-12 tahun';
+                helpText.style.color = '#6c757d';
+            }
+            return;
+        }
+        
+        const numValue = parseInt(value);
+        
+        if (isNaN(numValue)) {
+            // Bukan angka - warning
+            this.classList.add('is-invalid');
+            if (helpText && helpText.classList.contains('text-muted')) {
+                helpText.innerHTML = '<i class="bi bi-exclamation-triangle me-1"></i> Harus berupa angka';
+                helpText.style.color = 'var(--warning-color)';
+            }
+        } else if (numValue < 7) {
+            // Terlalu muda - error
+            this.classList.add('is-invalid');
+            if (helpText && helpText.classList.contains('text-muted')) {
+                helpText.innerHTML = '<i class="bi bi-x-circle me-1"></i> Usia minimal 7 tahun';
+                helpText.style.color = 'var(--danger-color)';
+            }
+        } else if (numValue > 12) {
+            // Terlalu tua - error
+            this.classList.add('is-invalid');
+            if (helpText && helpText.classList.contains('text-muted')) {
+                helpText.innerHTML = '<i class="bi bi-x-circle me-1"></i> Usia maksimal 12 tahun';
+                helpText.style.color = 'var(--danger-color)';
+            }
+        } else {
+            // Valid - success
+            this.classList.add('is-valid');
+            if (helpText && helpText.classList.contains('text-muted')) {
+                helpText.innerHTML = '<i class="bi bi-check-circle me-1"></i> Usia valid!';
+                helpText.style.color = 'var(--success-color)';
+            }
+        }
+    });
 }
 
 // Fungsi untuk inisialisasi volume sliders dengan real-time update
@@ -402,37 +485,236 @@ function initVolumeSliders() {
     });
 }
 
-// Fungsi untuk handle save profile
+// ===== FUNGSI NOTIFIKASI YANG DIPERBAIKI =====
+
+// Fungsi untuk menampilkan notifikasi yang lebih baik
+function showNotification(message, type = 'info', title = null, duration = 5000) {
+    // Hapus notifikasi lama jika ada
+    const existingNotifications = document.querySelectorAll('.custom-notification');
+    existingNotifications.forEach(notification => {
+        if (notification.parentNode) {
+            notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    });
+    
+    // Tentukan ikon dan judul berdasarkan jenis notifikasi
+    const typeConfigs = {
+        'success': {
+            icon: '✓',
+            defaultTitle: 'Berhasil',
+            title: title || 'Berhasil'
+        },
+        'error': {
+            icon: '✗',
+            defaultTitle: 'Gagal',
+            title: title || 'Gagal'
+        },
+        'warning': {
+            icon: '⚠',
+            defaultTitle: 'Peringatan',
+            title: title || 'Peringatan'
+        },
+        'info': {
+            icon: 'ℹ',
+            defaultTitle: 'Informasi',
+            title: title || 'Informasi'
+        }
+    };
+    
+    const config = typeConfigs[type] || typeConfigs.info;
+    
+    // Buat elemen notifikasi
+    const notification = document.createElement('div');
+    notification.className = `custom-notification ${type}`;
+    notification.setAttribute('role', 'alert');
+    
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">${config.icon}</span>
+            <div class="notification-body">
+                <strong class="notification-title">${config.title}</strong>
+                <div class="notification-message">${message}</div>
+            </div>
+            <button type="button" class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                &times;
+            </button>
+        </div>
+    `;
+    
+    // Tambahkan ke body
+    document.body.appendChild(notification);
+    
+    // Auto reset input usia jika error
+    if (type === 'error' && message.includes('usia')) {
+        const ageField = document.getElementById('settingsChildAge');
+        if (ageField && ageField.classList.contains('is-invalid')) {
+            // Hapus kelas error setelah 3 detik
+            setTimeout(() => {
+                ageField.classList.remove('is-invalid');
+                ageField.style.borderColor = '';
+                ageField.style.boxShadow = '';
+                ageField.style.backgroundColor = '';
+                ageField.style.backgroundImage = '';
+                ageField.style.animation = '';
+                
+                // Reset help text
+                const helpText = ageField.nextElementSibling;
+                if (helpText && helpText.classList.contains('text-muted')) {
+                    helpText.innerHTML = '<i class="bi bi-info-circle me-1"></i> Usia harus antara 7-12 tahun';
+                    helpText.style.color = '#6c757d';
+                }
+            }, 3000);
+        }
+    }
+    
+    // Hapus otomatis setelah durasi tertentu
+    const removeTimeout = setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    }, duration);
+    
+    // Tambahkan event listener untuk tombol close
+    const closeBtn = notification.querySelector('.notification-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            clearTimeout(removeTimeout);
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        });
+    }
+    
+    return notification;
+}
+
+// ===== FUNGSI SAVE PROFILE YANG DIPERBAIKI =====
+
+// Fungsi untuk handle save profile dengan validasi usia 7-12 tahun
 async function handleSaveProfile() {
     try {
         const user = auth.currentUser;
         if (!user) {
-            showNotification('Anda harus login untuk menyimpan pengaturan', 'error');
+            showNotification('Anda harus login untuk menyimpan pengaturan', 'error', 'Autentikasi Gagal');
             return;
         }
+        
+        const childAge = parseInt(document.getElementById('settingsChildAge').value);
+        const childName = document.getElementById('settingsChildName').value.trim();
+        const childGrade = document.getElementById('settingsChildGrade').value;
+        const avatar = document.getElementById('settingsChildAvatar').value;
+        const ageField = document.getElementById('settingsChildAge');
+        const nameField = document.getElementById('settingsChildName');
+        
+        // Reset error state sebelum validasi
+        ageField.classList.remove('is-invalid');
+        ageField.style.borderColor = '';
+        ageField.style.boxShadow = '';
+        ageField.style.backgroundColor = '';
+        ageField.style.backgroundImage = '';
+        ageField.style.animation = '';
+        
+        nameField.classList.remove('is-invalid');
+        nameField.style.borderColor = '';
+        nameField.style.boxShadow = '';
+        nameField.style.backgroundColor = '';
+        
+        // Validasi nama terlebih dahulu
+        if (!childName) {
+            showNotification('Nama anak tidak boleh kosong', 'warning', 'Data Tidak Lengkap');
+            nameField.classList.add('is-invalid');
+            nameField.focus();
+            return;
+        }
+        
+        // Validasi usia
+        if (!ageField.value.trim()) {
+            showNotification('Usia anak harus diisi', 'warning', 'Data Tidak Lengkap');
+            ageField.classList.add('is-invalid');
+            ageField.focus();
+            return;
+        }
+        
+        if (isNaN(childAge)) {
+            showNotification('Usia harus berupa angka', 'error', 'Input Tidak Valid');
+            ageField.classList.add('is-invalid');
+            ageField.focus();
+            return;
+        }
+        
+        // VALIDASI USIA 7-12 TAHUN
+        if (childAge < 7) {
+            // Efek visual error sementara
+            ageField.classList.add('is-invalid');
+            ageField.style.animation = 'errorPulse 0.5s ease-in-out';
+            
+            // Pesan error dengan notifikasi yang lebih baik
+            showNotification('Maaf, usia anak harus minimal 7 tahun untuk dapat menggunakan platform EduFunKids', 
+                           'error', 
+                           'Validasi Usia');
+            
+            // Auto reset error state setelah animasi
+            setTimeout(() => {
+                ageField.style.animation = '';
+            }, 500);
+            
+            ageField.focus();
+            return;
+        }
+        
+        if (childAge > 12) {
+            // Efek visual error sementara
+            ageField.classList.add('is-invalid');
+            ageField.style.animation = 'errorPulse 0.5s ease-in-out';
+            
+            // Pesan error dengan notifikasi yang lebih baik
+            showNotification('Maaf, usia anak maksimal 12 tahun untuk dapat menggunakan platform EduFunKids', 
+                           'error', 
+                           'Validasi Usia');
+            
+            // Auto reset error state setelah animasi
+            setTimeout(() => {
+                ageField.style.animation = '';
+            }, 500);
+            
+            ageField.focus();
+            return;
+        }
+        
+        // Semua validasi berhasil - tampilkan feedback positif
+        ageField.classList.add('is-valid');
         
         const userData = {
-            childName: document.getElementById('settingsChildName').value,
-            childAge: parseInt(document.getElementById('settingsChildAge').value),
-            childGrade: document.getElementById('settingsChildGrade').value,
-            avatar: document.getElementById('settingsChildAvatar').value,
+            childName: childName,
+            childAge: childAge,
+            childGrade: childGrade,
+            avatar: avatar,
             updatedAt: new Date()
         };
-        
-        // Validate required fields
-        if (!userData.childName || !userData.childAge) {
-            showNotification('Nama dan usia anak harus diisi', 'warning');
-            return;
-        }
         
         // Update user data in Firestore
         await updateDoc(doc(db, "users", user.uid), userData);
         
-        showNotification('Profil berhasil diperbarui!', 'success');
+        // Tampilkan notifikasi sukses yang lebih baik
+        showNotification('Profil anak berhasil diperbarui!', 'success', 'Perubahan Disimpan');
         
     } catch (error) {
         console.error('❌ Error saving profile:', error);
-        showNotification('Gagal menyimpan profil', 'error');
+        
+        // Tampilkan notifikasi error umum
+        if (!error.message.includes('Usia anak harus antara 7-12 tahun')) {
+            showNotification('Gagal menyimpan profil. Silakan coba lagi.', 'error', 'Terjadi Kesalahan');
+        }
     }
 }
 
@@ -441,7 +723,7 @@ async function handleSaveAudioSettings() {
     try {
         const user = auth.currentUser;
         if (!user) {
-            showNotification('Anda harus login untuk menyimpan pengaturan', 'error');
+            showNotification('Anda harus login untuk menyimpan pengaturan', 'error', 'Autentikasi Gagal');
             return;
         }
         
@@ -490,11 +772,11 @@ async function handleSaveAudioSettings() {
             window.opener.updateBackgroundMusicVolume();
         }
         
-        showNotification('Pengaturan audio berhasil disimpan!', 'success');
+        showNotification('Pengaturan audio berhasil disimpan!', 'success', 'Pengaturan Disimpan');
         
     } catch (error) {
         console.error('❌ Error saving audio settings:', error);
-        showNotification('Gagal menyimpan pengaturan audio', 'error');
+        showNotification('Gagal menyimpan pengaturan audio', 'error', 'Terjadi Kesalahan');
     }
 }
 
@@ -503,7 +785,7 @@ async function handleSaveNotificationSettings() {
     try {
         const user = auth.currentUser;
         if (!user) {
-            showNotification('Anda harus login untuk menyimpan pengaturan', 'error');
+            showNotification('Anda harus login untuk menyimpan pengaturan', 'error', 'Autentikasi Gagal');
             return;
         }
         
@@ -521,11 +803,11 @@ async function handleSaveNotificationSettings() {
             updatedAt: new Date()
         });
         
-        showNotification('Pengaturan notifikasi berhasil disimpan!', 'success');
+        showNotification('Pengaturan notifikasi berhasil disimpan!', 'success', 'Pengaturan Disimpan');
         
     } catch (error) {
         console.error('❌ Error saving notification settings:', error);
-        showNotification('Gagal menyimpan pengaturan notifikasi', 'error');
+        showNotification('Gagal menyimpan pengaturan notifikasi', 'error', 'Terjadi Kesalahan');
     }
 }
 
@@ -611,17 +893,17 @@ async function handleChangePassword() {
     
     // Validation
     if (!currentPassword || !newPassword || !confirmPassword) {
-        showNotification('Semua field harus diisi', 'warning');
+        showNotification('Semua field harus diisi', 'warning', 'Data Tidak Lengkap');
         throw new Error('Validation failed');
     }
     
     if (newPassword !== confirmPassword) {
-        showNotification('Password baru tidak cocok', 'warning');
+        showNotification('Password baru tidak cocok', 'warning', 'Validasi Password');
         throw new Error('Password mismatch');
     }
     
     if (newPassword.length < 6) {
-        showNotification('Password harus minimal 6 karakter', 'warning');
+        showNotification('Password harus minimal 6 karakter', 'warning', 'Validasi Password');
         throw new Error('Password too short');
     }
     
@@ -633,16 +915,16 @@ async function handleChangePassword() {
         // Update password
         await updatePassword(user, newPassword);
         
-        showNotification('Password berhasil diubah!', 'success');
+        showNotification('Password berhasil diubah!', 'success', 'Password Diubah');
         
     } catch (error) {
         console.error('❌ Error changing password:', error);
         if (error.code === 'auth/wrong-password') {
-            showNotification('Password saat ini salah', 'error');
+            showNotification('Password saat ini salah', 'error', 'Autentikasi Gagal');
         } else if (error.code === 'auth/requires-recent-login') {
-            showNotification('Silakan login ulang untuk mengubah password', 'warning');
+            showNotification('Silakan login ulang untuk mengubah password', 'warning', 'Sesi Kadaluarsa');
         } else {
-            showNotification('Gagal mengubah password', 'error');
+            showNotification('Gagal mengubah password', 'error', 'Terjadi Kesalahan');
         }
         throw error;
     }
@@ -653,7 +935,7 @@ async function handleDeleteData() {
     try {
         const user = auth.currentUser;
         if (!user) {
-            showNotification('Anda harus login untuk menghapus data', 'error');
+            showNotification('Anda harus login untuk menghapus data', 'error', 'Autentikasi Gagal');
             return;
         }
         
@@ -661,7 +943,7 @@ async function handleDeleteData() {
         await deleteDoc(doc(db, "users", user.uid));
         
         // Note: We don't delete the auth account, just the Firestore data
-        showNotification('Semua data berhasil dihapus!', 'success');
+        showNotification('Semua data berhasil dihapus!', 'success', 'Data Dihapus');
         
         // Redirect to setup page after a delay
         setTimeout(() => {
@@ -670,7 +952,7 @@ async function handleDeleteData() {
         
     } catch (error) {
         console.error('❌ Error deleting data:', error);
-        showNotification('Gagal menghapus data', 'error');
+        showNotification('Gagal menghapus data', 'error', 'Terjadi Kesalahan');
         throw error;
     }
 }
@@ -686,7 +968,7 @@ async function handleLogout() {
         
         await signOut(auth);
         console.log('✅ User logged out successfully');
-        showNotification('Logout berhasil!', 'success');
+        showNotification('Logout berhasil!', 'success', 'Selesai');
         
         // Redirect to login page after short delay
         setTimeout(() => {
@@ -695,58 +977,12 @@ async function handleLogout() {
         
     } catch (error) {
         console.error('❌ Logout error:', error);
-        showNotification('Gagal logout. Silakan coba lagi.', 'error');
+        showNotification('Gagal logout. Silakan coba lagi.', 'error', 'Terjadi Kesalahan');
     }
-}
-
-// Fungsi untuk menampilkan notifikasi
-function showNotification(message, type = 'info', duration = 5000) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = `
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-        min-width: 300px;
-        max-width: 500px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        border: none;
-        border-radius: 15px;
-    `;
-    
-    const typeIcons = {
-        'success': '✅',
-        'error': '❌',
-        'warning': '⚠️',
-        'info': 'ℹ️'
-    };
-    
-    notification.innerHTML = `
-        <div class="d-flex align-items-center">
-            <span class="me-2" style="font-size: 1.2rem;">${typeIcons[type] || 'ℹ️'}</span>
-            <span class="flex-grow-1">${message}</span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Initialize Bootstrap alert
-    const bsAlert = new bootstrap.Alert(notification);
-    
-    // Auto remove after duration
-    setTimeout(() => {
-        if (notification.parentNode) {
-            bsAlert.close();
-        }
-    }, duration);
-    
-    return notification;
 }
 
 // Global error handler
 window.addEventListener('error', function(e) {
     console.error('❌ Global error in settings:', e.error);
-    showNotification('Terjadi kesalahan. Silakan refresh halaman.', 'error');
+    showNotification('Terjadi kesalahan. Silakan refresh halaman.', 'error', 'Kesalahan Sistem');
 });

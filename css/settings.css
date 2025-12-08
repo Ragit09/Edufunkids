@@ -426,6 +426,11 @@ body {
     text-align: center;
 }
 
+.info-item strong {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
 .about-features .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -501,6 +506,61 @@ body {
     opacity: 1;
 }
 
+/* Styling khusus untuk input usia */
+#settingsChildAge.is-valid {
+    border-color: var(--success-color) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2351cf66' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: 2.5rem;
+    background-color: rgba(81, 207, 102, 0.05);
+}
+
+/* Input usia error - hanya sementara */
+#settingsChildAge.is-invalid {
+    animation: errorPulse 0.5s ease-in-out;
+    background-color: rgba(255, 107, 107, 0.05) !important;
+    border-color: var(--danger-color) !important;
+    transition: all 0.3s ease;
+}
+
+#settingsChildAge.is-invalid:focus {
+    border-color: var(--primary-color) !important;
+    background-color: white !important;
+    box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25) !important;
+}
+
+/* Animasi untuk error state */
+@keyframes errorPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+    }
+    50% { 
+        transform: scale(1.02); 
+        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+    }
+}
+
+/* Pesan bantuan untuk usia error */
+#settingsChildAge ~ .text-muted {
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+#settingsChildAge.is-invalid ~ .text-muted {
+    color: var(--danger-color) !important;
+    font-weight: 600;
+}
+
+#settingsChildAge.is-valid ~ .text-muted {
+    color: var(--success-color) !important;
+    font-weight: 600;
+}
+
 /* ===== BUTTON STYLES ===== */
 .btn {
     border-radius: 12px;
@@ -546,6 +606,130 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 10px;
     font-size: 0.85rem;
+}
+
+/* ===== NOTIFICATION STYLES ===== */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 350px;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 15px;
+    padding: 1.25rem 1.5rem;
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-out 4.7s forwards;
+    opacity: 1;
+    transform: translateX(0);
+    background: white;
+    border-left: 5px solid transparent;
+}
+
+.custom-notification.success {
+    background: linear-gradient(135deg, var(--success-color), #40c057);
+    color: white;
+    border-left-color: #2b8a3e;
+}
+
+.custom-notification.error {
+    background: linear-gradient(135deg, var(--danger-color), #ff5252);
+    color: white;
+    border-left-color: #c92a2a;
+}
+
+.custom-notification.warning {
+    background: linear-gradient(135deg, var(--warning-color), #ffd43b);
+    color: #212529;
+    border-left-color: #e67700;
+}
+
+.custom-notification.info {
+    background: linear-gradient(135deg, var(--info-color), #4dabf7);
+    color: white;
+    border-left-color: #1971c2;
+}
+
+.custom-notification .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.custom-notification .notification-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.custom-notification .notification-body {
+    flex-grow: 1;
+}
+
+.custom-notification .notification-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.custom-notification .notification-message {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+.custom-notification .notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.custom-notification .notification-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -594,6 +778,35 @@ body {
     
     .avatar-selection {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Responsive untuk notifikasi */
+    .custom-notification {
+        min-width: 280px;
+        max-width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        margin: 0 auto;
+        top: 80px;
+        padding: 1rem 1.25rem;
+    }
+    
+    .custom-notification .notification-content {
+        gap: 10px;
+    }
+    
+    .custom-notification .notification-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+    
+    .custom-notification .notification-title {
+        font-size: 0.95rem;
+    }
+    
+    .custom-notification .notification-message {
+        font-size: 0.85rem;
     }
 }
 
